@@ -43,10 +43,11 @@
             this.label7 = new System.Windows.Forms.Label();
             this.txtGSTNo = new DevExpress.XtraEditors.TextEdit();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
-            this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
+            this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.col_PAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtCity.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtPanNo.Properties)).BeginInit();
@@ -190,7 +191,8 @@
             this.dgvStaff.BackgroundColor = System.Drawing.Color.White;
             this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_Name});
+            this.col_Name,
+            this.col_PAN});
             this.dgvStaff.Location = new System.Drawing.Point(544, 30);
             this.dgvStaff.Name = "dgvStaff";
             this.dgvStaff.ReadOnly = true;
@@ -198,14 +200,6 @@
             this.dgvStaff.Size = new System.Drawing.Size(363, 315);
             this.dgvStaff.TabIndex = 17;
             this.dgvStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
-            // 
-            // col_Name
-            // 
-            this.col_Name.DataPropertyName = "Name";
-            this.col_Name.HeaderText = "Customer Name";
-            this.col_Name.Name = "col_Name";
-            this.col_Name.ReadOnly = true;
-            this.col_Name.Width = 360;
             // 
             // btnClear
             // 
@@ -251,6 +245,22 @@
             this.btnSave.Text = "Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            // 
+            // col_Name
+            // 
+            this.col_Name.DataPropertyName = "Name";
+            this.col_Name.HeaderText = "Customer Name";
+            this.col_Name.Name = "col_Name";
+            this.col_Name.ReadOnly = true;
+            this.col_Name.Width = 210;
+            // 
+            // col_PAN
+            // 
+            this.col_PAN.DataPropertyName = "PanNumber";
+            this.col_PAN.HeaderText = "Pan Number";
+            this.col_PAN.Name = "col_PAN";
+            this.col_PAN.ReadOnly = true;
+            this.col_PAN.Width = 150;
             // 
             // CustomerView
             // 
@@ -315,5 +325,6 @@
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Name;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_PAN;
     }
 }

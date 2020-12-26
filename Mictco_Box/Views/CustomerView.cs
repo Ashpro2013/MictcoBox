@@ -24,6 +24,7 @@ namespace Mictco_Box
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (txtName.Text == string.Empty || txtPanNo.Text == string.Empty) { Messages.WarningMessage(); return; }
             var customer = new Customer
             {
                 Id = iCustomerId,

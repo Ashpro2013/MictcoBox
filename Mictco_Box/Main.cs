@@ -105,6 +105,7 @@ namespace Mictco_Box
         }
         private void Main_Load(object sender, EventArgs e)
         {
+            this.WindowState = FormWindowState.Maximized;
             if (Properties.Settings.Default.Connection==string.Empty)
             {
               path = AniHelper.NewDatabaseMethodCE("MictCoDB");
