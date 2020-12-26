@@ -32,7 +32,7 @@ namespace Mictco_Box
                 }
             }
         }
-        public static void NewDatabaseMethodCE(string Company)
+        public static string  NewDatabaseMethodCE(string Company)
         {
             string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Data\\";
             if (!Directory.Exists(path))
@@ -76,10 +76,11 @@ namespace Mictco_Box
                         }
                     }
                 }
-                MessageBox.Show("New Company Created Successfully.", Properties.Settings.Default.strManufaturer);
+                return strConnection;
             }
             catch (Exception ex)
             {
+                return strConnection;
                 Messages.ErrorMessage(ex.Message + " + " + query);
             }
         }

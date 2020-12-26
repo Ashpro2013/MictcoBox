@@ -6,6 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
+using System.Data.SqlServerCe;
 namespace Mictco_Box
 {
     public class ORMForSDF
@@ -35,9 +36,9 @@ namespace Mictco_Box
             try
             {
                 DataTable dt = new DataTable();
-                using (SqlConnection con = new SqlConnection(sConnection))
+                using (SqlCeConnection con = new SqlCeConnection(sConnection))
                 {
-                    using (SqlDataAdapter da = new SqlDataAdapter(Query, con))
+                    using (SqlCeDataAdapter da = new SqlCeDataAdapter(Query, con))
                     {
                         da.Fill(dt);
                     }
@@ -56,9 +57,9 @@ namespace Mictco_Box
                 try
                 {
                     DataTable dt = new DataTable();
-                    using (SqlConnection con = new SqlConnection(sConnection))
+                    using (SqlCeConnection con = new SqlCeConnection(sConnection))
                     {
-                        using (SqlDataAdapter da = new SqlDataAdapter(Query, con))
+                        using (SqlCeDataAdapter da = new SqlCeDataAdapter(Query, con))
                         {
                             da.Fill(dt);
                         }
@@ -201,9 +202,9 @@ namespace Mictco_Box
             }
             try
             {
-                using (SqlConnection con = new SqlConnection(Connection))
+                using (SqlCeConnection con = new SqlCeConnection(Connection))
                 {
-                    using (SqlCommand cmd = new SqlCommand(Query, con))
+                    using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                     {
                         con.Open();
                         cmd.ExecuteNonQuery();
@@ -236,13 +237,13 @@ namespace Mictco_Box
             try
             {
                 List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-                using (SqlConnection con = new SqlConnection(Connection))
+                using (SqlCeConnection con = new SqlCeConnection(Connection))
                 {
                     try
                     {
                         foreach (var item in data.GetType().GetProperties())
                         {
-                            if (item.GetValue(data, null) != null)
+                            if (item.Name != "Id" && item.GetValue(data, null) != null)
                             {
                                 if (item.PropertyType.Name == "Nullable`1" && item.GetValue(data, null).ToString() == "0")
                                 {
@@ -252,7 +253,7 @@ namespace Mictco_Box
                             }
                         }
                         string Query = getInsertCommand(table, values);
-                        using (SqlCommand cmd = new SqlCommand(Query, con))
+                        using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                         {
                             cmd.Parameters.Clear();
                             foreach (var item in data.GetType().GetProperties())
@@ -272,9 +273,7 @@ namespace Mictco_Box
                                         cmd.Parameters.AddWithValue("@" + item.Name, AniHelper.GetDate((DateTime)(item.GetValue(data, null))));
                                     }
                                     else
-                                    {
                                         cmd.Parameters.AddWithValue("@" + item.Name, item.GetValue(data, null).ToString());
-                                    }
                                 }
                             }
                             con.Open();
@@ -322,7 +321,7 @@ namespace Mictco_Box
             try
             {
                 List<KeyValuePair<string, string>> values = new List<KeyValuePair<string, string>>();
-                using (SqlConnection con = new SqlConnection(Connection))
+                using (SqlCeConnection con = new SqlCeConnection(Connection))
                 {
                     try
                     {
@@ -338,7 +337,7 @@ namespace Mictco_Box
                             }
                         }
                         string Query = getUpdateCommand(table, values, column, "@" + column);
-                        using (SqlCommand cmd = new SqlCommand(Query, con))
+                        using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                         {
                             cmd.Parameters.Clear();
                             cmd.Parameters.AddWithValue("@" + column, iValue);
@@ -366,9 +365,8 @@ namespace Mictco_Box
                             cmd.ExecuteNonQuery();
                         }
                     }
-                    catch (Exception ex)
+                    catch (Exception)
                     {
-                        Messages.ErrorMessage(ex.Message);
                         return false;
                         throw;
                     }
@@ -385,9 +383,9 @@ namespace Mictco_Box
             string Query = "Delete From  " + table + " Where " + column + " = @" + column + "";
             try
             {
-                using (SqlConnection con = new SqlConnection(Connection))
+                using (SqlCeConnection con = new SqlCeConnection(Connection))
                 {
-                    using (SqlCommand cmd = new SqlCommand(Query, con))
+                    using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                     {
                         cmd.Parameters.Clear();
                         cmd.Parameters.AddWithValue("@" + column, iValue);
@@ -407,9 +405,9 @@ namespace Mictco_Box
         {
             try
             {
-                using (SqlConnection con = new SqlConnection(Connection))
+                using (SqlCeConnection con = new SqlCeConnection(Connection))
                 {
-                    using (SqlCommand cmd = new SqlCommand(Query, con))
+                    using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                     {
                         con.Open();
                         cmd.ExecuteNonQuery();
@@ -419,7 +417,6 @@ namespace Mictco_Box
             }
             catch (Exception)
             {
-                return false;
                 throw;
             }
         }
@@ -431,7 +428,7 @@ namespace Mictco_Box
                 bool result = false;
                 string sValue = string.Empty;
                 List<KeyValuePair<dynamic, dynamic>> values = new List<KeyValuePair<dynamic, dynamic>>();
-                SqlConnection con = new SqlConnection(sConnection);
+                SqlCeConnection con = new SqlCeConnection(sConnection);
                 con.Open();
                 try
                 {
@@ -466,7 +463,7 @@ namespace Mictco_Box
                             {
                                 Query = getInsertCommand(table, values);
                             }
-                            using (SqlCommand cmd = new SqlCommand(Query, con))
+                            using (SqlCeCommand cmd = new SqlCeCommand(Query, con))
                             {
                                 cmd.ExecuteNonQuery();
                             }
@@ -804,337 +801,6 @@ namespace Mictco_Box
             query = query.Remove(query.Length - 2, 2);
             query += ")";
             return query;
-        }
-        #endregion
-
-        #region Public Method BySP
-        public static bool InsertMethod_SP(List<object> entities, string sStoredProceedure, string Connection)
-        {
-            try
-            {
-                foreach (object data in entities)
-                {
-                    InsertMethod_SP(data, sStoredProceedure, Connection);
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
-            return true;
-        }
-        public static bool InsertMethod_SP(object entity, string sStoredProceedure, string Connection)
-        {
-            bool result = false;
-            using (SqlConnection con = new SqlConnection(Connection))
-            {
-                using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    try
-                    {
-                        foreach (var item in entity.GetType().GetProperties())
-                        {
-                            if (item.GetValue(entity, null) != null)
-                            {
-                                if (item.PropertyType.Name == "Nullable`1" && item.GetValue(entity, null).ToString() == "0")
-                                {
-                                    continue;
-                                }
-
-                                if (item.PropertyType.Name == "Byte[]")
-                                {
-                                    cmd.Parameters.AddWithValue(item.Name, (byte[])(item.GetValue(entity, null)));
-                                }
-                                else if (item.PropertyType.Name == "DateTime")
-                                {
-                                    cmd.Parameters.AddWithValue("@" + item.Name, AniHelper.GetDate((DateTime)(item.GetValue(entity, null))));
-                                }
-                                else
-                                    cmd.Parameters.AddWithValue(item.Name, item.GetValue(entity, null).ToString());
-                            }
-                        }
-                        con.Open();
-                        int numRes = cmd.ExecuteNonQuery();
-                        if (numRes > 0)
-                        {
-                            result = true;
-                        }
-                        else
-                        {
-                            result = false;
-                        }
-                    }
-                    catch (Exception)
-                    {
-                        throw;
-                    }
-                }
-            }
-            return result;
-        }
-        public static bool UpdateMethod_SP(object entity, string sStoredProceedure, string Connection)
-        {
-            bool result = false;
-            int numRes = 0;
-            using (SqlConnection con = new SqlConnection(Connection))
-            {
-                using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    try
-                    {
-                        foreach (var item in entity.GetType().GetProperties())
-                        {
-                            if (item.GetValue(entity, null) != null)
-                            {
-                                if (item.PropertyType.Name == "Nullable`1" && item.GetValue(entity, null).ToString() == "0")
-                                {
-                                    continue;
-                                }
-                                if (item.PropertyType.Name == "Byte[]")
-                                {
-                                    cmd.Parameters.AddWithValue(item.Name, (byte[])(item.GetValue(entity, null)));
-                                }
-                                else if (item.PropertyType.Name == "DateTime")
-                                {
-                                    cmd.Parameters.AddWithValue("@" + item.Name, AniHelper.GetDate((DateTime)(item.GetValue(entity, null))));
-                                }
-                                else
-                                    cmd.Parameters.AddWithValue(item.Name, item.GetValue(entity, null).ToString());
-                            }
-                        }
-                        con.Open();
-                        numRes = cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception)
-                    {
-                        result = false;
-                        throw;
-                    }
-                }
-            }
-            if (numRes > 0)
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-            return result;
-        }
-        public static bool UpdateMethod_SP(List<object> entities, string sStoredProceedure, string Connection)
-        {
-            try
-            {
-                foreach (object data in entities)
-                {
-                    UpdateMethod_SP(data, sStoredProceedure, Connection);
-                }
-            }
-            catch (Exception)
-            {
-                return false;
-                throw;
-            }
-            return true;
-        }
-        public static bool DeleteMethod_SP(object entity, string sStoredProceedure, string Connection)
-        {
-            bool result = false;
-            int numRes = 0;
-            using (SqlConnection con = new SqlConnection(Connection))
-            {
-                using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                {
-                    cmd.CommandType = CommandType.StoredProcedure;
-                    try
-                    {
-                        foreach (var item in entity.GetType().GetProperties())
-                        {
-                            if (item.Name == "Id")
-                            {
-                                cmd.Parameters.AddWithValue(item.Name, item.GetValue(entity, null).ToString());
-                            }
-                        }
-                        con.Open();
-                        numRes = cmd.ExecuteNonQuery();
-                    }
-                    catch (Exception)
-                    {
-                        result = false;
-                        throw;
-                    }
-                }
-            }
-            if (numRes > 0)
-            {
-                result = true;
-            }
-            else
-            {
-                result = false;
-            }
-            return result;
-        }
-        public static DataTable GetDataTable_SP(string sStoredProceedure, string Connection)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                using (SqlConnection con = new SqlConnection(Connection))
-                {
-                    using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            da.Fill(dt);
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static DataTable GetDataTableWithIdParameter_SP(string sStoredProceedure, string Value, string Connection)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                using (SqlConnection con = new SqlConnection(Connection))
-                {
-                    using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        cmd.Parameters.AddWithValue("@Id", Value);
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            da.Fill(dt);
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static DataTable GetDataTableWithIdParameter_SP(string sStoredProceedure, object entity, string Connection)
-        {
-            try
-            {
-                DataTable dt = new DataTable();
-                using (SqlConnection con = new SqlConnection(Connection))
-                {
-                    using (SqlCommand cmd = new SqlCommand(sStoredProceedure, con))
-                    {
-                        cmd.CommandType = CommandType.StoredProcedure;
-                        foreach (var item in entity.GetType().GetProperties())
-                        {
-                            cmd.Parameters.AddWithValue(item.Name, item.GetValue(entity, null).ToString());
-                        }
-                        using (SqlDataAdapter da = new SqlDataAdapter(cmd))
-                        {
-                            da.Fill(dt);
-                        }
-                    }
-                }
-                return dt;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static List<T> GetList_SP<T>(string sStoredProceedure, string Connection)
-        {
-            try
-            {
-                List<T> dsList = new List<T>();
-                DataTable dt = new DataTable();
-                dt = GetDataTable_SP(sStoredProceedure, Connection);
-                dsList = ConvertDataTable<T>(dt);
-                return dsList;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static List<T> GetList_SP<T>(string sStoredProceedure, string Value, string Connection)
-        {
-            try
-            {
-                List<T> dsList = new List<T>();
-                DataTable dt = new DataTable();
-                dt = GetDataTableWithIdParameter_SP(sStoredProceedure, Value, Connection);
-                dsList = ConvertDataTable<T>(dt);
-                return dsList;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static List<T> GetList_SP<T>(string sStoredProceedure, object entity, string Connection)
-        {
-            try
-            {
-                List<T> dsList = new List<T>();
-                DataTable dt = new DataTable();
-                dt = GetDataTableWithIdParameter_SP(sStoredProceedure, entity, Connection);
-                dsList = ConvertDataTable<T>(dt);
-                return dsList;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static T GetObject_SP<T>(string sStoredProceedure, string Value, string Connection)
-        {
-            try
-            {
-                Type temp = typeof(T);
-                T obj = Activator.CreateInstance<T>();
-                DataTable dt = new DataTable();
-                dt = GetDataTableWithIdParameter_SP(sStoredProceedure, Value, Connection);
-                foreach (DataRow row in dt.Rows)
-                {
-                    obj = GetItem<T>(row);
-                }
-                return obj;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
-        }
-        public static T GetObject_SP<T>(string sStoredProceedure, string Connection)
-        {
-            try
-            {
-                Type temp = typeof(T);
-                T obj = Activator.CreateInstance<T>();
-                DataTable dt = new DataTable();
-                dt = GetDataTable_SP(sStoredProceedure, Connection);
-                foreach (DataRow row in dt.Rows)
-                {
-                    obj = GetItem<T>(row);
-                }
-                return obj;
-            }
-            catch (Exception)
-            {
-                throw;
-            }
         }
         #endregion
     }

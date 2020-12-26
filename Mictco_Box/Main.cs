@@ -17,6 +17,7 @@ namespace Mictco_Box
         DBContext db = new DBContext();
         Button slotButton;
         int x = 10, y = 10;
+        string path;
         #endregion
 
         #region Constructor
@@ -46,6 +47,7 @@ namespace Mictco_Box
                     slotButton.BackColor = Color.Green;
                 }
             }
+            slotButton.ForeColor = Color.White;
             slotButton.Text = slot.Name;
             slotButton.Tag = slot.Id;
             slotButton.Click += slotButton_Click;
@@ -103,10 +105,15 @@ namespace Mictco_Box
         }
         private void Main_Load(object sender, EventArgs e)
         {
-            //string path = @"Data Source=C:\Users\MICTCO\Documents\MICTCOBOXDB.sdfData Source=DESKTOP-2S972LR\SQLR2;Initial Catalog=MICTCODB;User ID=sa;Password=***********";
-            string path = @"Data Source=DESKTOP-2S972LR\SQLR2;Initial Catalog=MICTCODB;User ID=sa;Password=wf";
-            Properties.Settings.Default.Connection = path;
-            Properties.Settings.Default.Save();
+            if (Properties.Settings.Default.Connection==string.Empty)
+            {
+              path = AniHelper.NewDatabaseMethodCE("MictCoDB");
+              //path = @"Data Source=DESKTOP-2S972LR\SQLR2;Initial Catalog=MICTCODB;User ID=sa;Password=wf";
+              Properties.Settings.Default.Connection = path;
+              Properties.Settings.Default.Save();
+            }
+            
+           
             
             LoadMethod();
         }

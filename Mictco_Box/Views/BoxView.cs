@@ -116,6 +116,7 @@ namespace Mictco_Box
        
         private void txtSlotCount_Validated(object sender, EventArgs e)
         {
+            lbSlots.Items.Clear();
             for (int i = 1; i < txtSlotCount.Text.ToInt32() + 1; i++)
             {
                 lbSlots.Items.Add(txtName.Text + i.ToString());
