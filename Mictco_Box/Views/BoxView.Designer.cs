@@ -111,6 +111,7 @@
             this.dgvStaff.RowHeadersVisible = false;
             this.dgvStaff.Size = new System.Drawing.Size(363, 293);
             this.dgvStaff.TabIndex = 7;
+            this.dgvStaff.TabStop = false;
             this.dgvStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
             // 
             // col_Name
@@ -194,7 +195,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.Name = "BoxView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "BoxView";
+            this.Text = "Box";
             this.Load += new System.EventHandler(this.BoxView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);

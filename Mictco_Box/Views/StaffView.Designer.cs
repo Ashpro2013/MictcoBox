@@ -30,7 +30,7 @@
         {
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtStaffName = new System.Windows.Forms.TextBox();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -70,13 +70,13 @@
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
-            // txtStaffName
+            // txtName
             // 
-            this.txtStaffName.Location = new System.Drawing.Point(153, 24);
-            this.txtStaffName.Margin = new System.Windows.Forms.Padding(4);
-            this.txtStaffName.Name = "txtStaffName";
-            this.txtStaffName.Size = new System.Drawing.Size(363, 22);
-            this.txtStaffName.TabIndex = 1;
+            this.txtName.Location = new System.Drawing.Point(153, 24);
+            this.txtName.Margin = new System.Windows.Forms.Padding(4);
+            this.txtName.Name = "txtName";
+            this.txtName.Size = new System.Drawing.Size(363, 22);
+            this.txtName.TabIndex = 1;
             // 
             // label1
             // 
@@ -102,6 +102,7 @@
             this.dgvStaff.RowHeadersVisible = false;
             this.dgvStaff.Size = new System.Drawing.Size(363, 183);
             this.dgvStaff.TabIndex = 4;
+            this.dgvStaff.TabStop = false;
             this.dgvStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
             // 
             // col_Name
@@ -155,14 +156,14 @@
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.txtStaffName);
+            this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.dgvStaff);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "StaffView";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "StaffView";
+            this.Text = "Staff";
             this.Load += new System.EventHandler(this.StaffView_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);
@@ -174,7 +175,7 @@
 
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtStaffName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Button btnDelete;

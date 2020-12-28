@@ -15,6 +15,13 @@ namespace Mictco_Box
                 return ORMForSDF.GetListMethod<Box>("Select * From Box",Properties.Settings.Default.Connection);
             }
         }
+        public List<Transactions> Transactions
+        {
+            get
+            {
+                return ORMForSDF.GetListMethod<Transactions>("Select * From Transactions", Properties.Settings.Default.Connection);
+            }
+        }
         public List<Slot> Slots
         {
             get

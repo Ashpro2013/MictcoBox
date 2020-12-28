@@ -43,23 +43,26 @@
             this.tabMdi = new System.Windows.Forms.TabControl();
             this.tpDashboard = new System.Windows.Forms.TabPage();
             this.pnlSlots = new System.Windows.Forms.Panel();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlNavigation.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.tabMdi.SuspendLayout();
             this.tpDashboard.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNavigation
             // 
             this.pnlNavigation.AutoScroll = true;
             this.pnlNavigation.BackColor = System.Drawing.Color.Black;
+            this.pnlNavigation.Controls.Add(this.pictureBox1);
             this.pnlNavigation.Controls.Add(this.btnReports);
             this.pnlNavigation.Controls.Add(this.btnTransaction);
             this.pnlNavigation.Controls.Add(this.btnMasters);
             this.pnlNavigation.Controls.Add(this.btnFirm);
             this.pnlNavigation.Controls.Add(this.btnDashBoard);
             this.pnlNavigation.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlNavigation.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.pnlNavigation.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.pnlNavigation.Location = new System.Drawing.Point(0, 0);
             this.pnlNavigation.Margin = new System.Windows.Forms.Padding(0);
             this.pnlNavigation.Name = "pnlNavigation";
@@ -176,22 +179,22 @@
             // lblUser
             // 
             this.lblUser.AutoSize = true;
-            this.lblUser.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUser.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblUser.ForeColor = System.Drawing.Color.White;
             this.lblUser.Location = new System.Drawing.Point(191, 19);
             this.lblUser.Name = "lblUser";
-            this.lblUser.Size = new System.Drawing.Size(52, 18);
+            this.lblUser.Size = new System.Drawing.Size(47, 17);
             this.lblUser.TabIndex = 121;
             this.lblUser.Text = "Admin";
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label1.ForeColor = System.Drawing.Color.White;
             this.label1.Location = new System.Drawing.Point(101, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(51, 18);
+            this.label1.Size = new System.Drawing.Size(46, 17);
             this.label1.TabIndex = 121;
             this.label1.Text = "User :";
             // 
@@ -205,7 +208,7 @@
             this.btnMinimize.Font = new System.Drawing.Font("Verdana", 21.75F);
             this.btnMinimize.ForeColor = System.Drawing.Color.DarkGray;
             this.btnMinimize.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnMinimize.Location = new System.Drawing.Point(977, 1);
+            this.btnMinimize.Location = new System.Drawing.Point(989, 1);
             this.btnMinimize.Name = "btnMinimize";
             this.btnMinimize.Size = new System.Drawing.Size(55, 47);
             this.btnMinimize.TabIndex = 120;
@@ -225,7 +228,7 @@
             this.btnClose.ForeColor = System.Drawing.Color.White;
             this.btnClose.Image = ((System.Drawing.Image)(resources.GetObject("btnClose.Image")));
             this.btnClose.ImeMode = System.Windows.Forms.ImeMode.NoControl;
-            this.btnClose.Location = new System.Drawing.Point(1037, 1);
+            this.btnClose.Location = new System.Drawing.Point(1049, 1);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(55, 47);
             this.btnClose.TabIndex = 119;
@@ -237,7 +240,7 @@
             this.tabMdi.Alignment = System.Windows.Forms.TabAlignment.Right;
             this.tabMdi.Controls.Add(this.tpDashboard);
             this.tabMdi.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tabMdi.Font = new System.Drawing.Font("MS Reference Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tabMdi.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tabMdi.Location = new System.Drawing.Point(225, 49);
             this.tabMdi.Margin = new System.Windows.Forms.Padding(0);
             this.tabMdi.Multiline = true;
@@ -245,6 +248,7 @@
             this.tabMdi.SelectedIndex = 0;
             this.tabMdi.Size = new System.Drawing.Size(1095, 700);
             this.tabMdi.TabIndex = 8;
+            this.tabMdi.SelectedIndexChanged += new System.EventHandler(this.tabMdi_SelectedIndexChanged);
             // 
             // tpDashboard
             // 
@@ -253,7 +257,7 @@
             this.tpDashboard.Location = new System.Drawing.Point(4, 4);
             this.tpDashboard.Margin = new System.Windows.Forms.Padding(0);
             this.tpDashboard.Name = "tpDashboard";
-            this.tpDashboard.Size = new System.Drawing.Size(1065, 692);
+            this.tpDashboard.Size = new System.Drawing.Size(1066, 692);
             this.tpDashboard.TabIndex = 0;
             this.tpDashboard.Text = "Dashboard";
             // 
@@ -263,8 +267,18 @@
             this.pnlSlots.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlSlots.Location = new System.Drawing.Point(0, 0);
             this.pnlSlots.Name = "pnlSlots";
-            this.pnlSlots.Size = new System.Drawing.Size(1065, 692);
+            this.pnlSlots.Size = new System.Drawing.Size(1066, 692);
             this.pnlSlots.TabIndex = 0;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-30, 654);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(251, 92);
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
             // 
             // Main
             // 
@@ -285,6 +299,7 @@
             this.pnlTitle.PerformLayout();
             this.tabMdi.ResumeLayout(false);
             this.tpDashboard.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -305,5 +320,6 @@
         private System.Windows.Forms.TabControl tabMdi;
         private System.Windows.Forms.TabPage tpDashboard;
         private System.Windows.Forms.Panel pnlSlots;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

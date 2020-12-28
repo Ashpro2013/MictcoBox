@@ -31,6 +31,7 @@ namespace Mictco_Box
             cmbStaff.DataSource = db.Staffs.ToList();
             cmbStaff.SelectedValue = User.iUserId;
             cmbStaff.Enabled = false;
+            this.ActiveControl = txtName;
         }
 
         private void dgvStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)

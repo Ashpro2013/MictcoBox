@@ -55,7 +55,27 @@ namespace Mictco_Box
             slot.OccupaidStatus = cmbOccupaid.SelectedIndex;
             slot.FK_CustomerId = cmbCustomer.SelectedValue.ToInt32();
             slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
-            if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
+            if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection)) 
+            {
+                string status = string.Empty;
+                if(cmbOccupaid.SelectedIndex==0 )
+                {
+                    status = "Alotment Removed";
+                }
+                else
+                {
+                    if(cmbInOrOut.SelectedIndex==0)
+                    {
+                        status = "Outed";
+                    }
+                    else
+                    {
+                        status = "In";
+                    }
+                }
+                var transaction = new Transactions { Id=null,FK_Customer = slot.FK_CustomerId,FK_Slot = slot.Id,FK_Staff=User.iUserId,Date = DateTime.Now.Date,Status=status,Remarks=""};
+                if (ORMForSDF.InsertToDatabaseObj(transaction, "Transactions", Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
+            }
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

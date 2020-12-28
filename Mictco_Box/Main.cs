@@ -15,7 +15,7 @@ namespace Mictco_Box
         #region Private Variables
         DBContext db = new DBContext();
         Button slotButton;
-        int x = 10, y = 10;
+        int w = 10, y = 10;
         #endregion
 
         #region Constructor
@@ -30,25 +30,11 @@ namespace Mictco_Box
         {
             
             slotButton = new Button();
-            if (slot.OccupaidStatus==0)
-            {
-                slotButton.BackColor = Color.Blue;
-            }
-            else
-            {
-                if (slot.InStatus==1)
-                {
-                    slotButton.BackColor = Color.Red;
-                }
-                else
-                {
-                    slotButton.BackColor = Color.Green;
-                }
-            }
+            ButtonColorChangeMethod(slotButton, slot);
             slotButton.ForeColor = Color.White;
             slotButton.Text = slot.Name;
             slotButton.Tag = slot.Id;
-            if (slot.FK_CustomerId != null)
+            if (slot.FK_CustomerId != null && slot.OccupaidStatus==1)
             {
                 ToolTip ttMain = new ToolTip();
                 ttMain.AutoPopDelay = 5000;
@@ -59,12 +45,12 @@ namespace Mictco_Box
             }
             slotButton.Click += slotButton_Click;
             slotButton.Size = new Size(100, 30);
-            slotButton.Location = new Point(x, y);
+            slotButton.Location = new Point(w, y);
             if (!pnlSlots.Contains(slotButton))
             {
                 pnlSlots.Controls.Add(slotButton);
             }
-            x = x + 110;
+            w = w + 110;
         }
         private void OpenForm(Form frm, int X = 25, int Y = 25, string sForm = null)
         {
@@ -131,20 +117,24 @@ namespace Mictco_Box
             frm.slot = slot;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                if (slot.OccupaidStatus==0)
+                ButtonColorChangeMethod(btnSlot, slot);
+            }
+        }
+        private static void ButtonColorChangeMethod(Button btnSlot, Slot slot)
+        {
+            if (slot.OccupaidStatus == 0)
+            {
+                btnSlot.BackColor = Color.Gray;
+            }
+            else
+            {
+                if (slot.InStatus == 1)
                 {
                     btnSlot.BackColor = Color.Blue;
                 }
                 else
                 {
-                    if (slot.InStatus==1)
-                    {
-                        btnSlot.BackColor = Color.Red;
-                    }
-                    else
-                    {
-                        btnSlot.BackColor = Color.Green;
-                    }
+                    btnSlot.BackColor = Color.Green;
                 }
             }
         }
@@ -153,7 +143,7 @@ namespace Mictco_Box
         #region Events
         private void LoadMethod()
         {
-            x = 10;
+            w = 10;
             y = 10;
             pnlSlots.Controls.Clear();
             foreach (var item in db.Boxes)
@@ -162,7 +152,7 @@ namespace Mictco_Box
                 {
                     AddSlotMethod(slot);
                 }
-                x = 10;
+                w = 10;
                 y = y + 40;
             }
         }
@@ -201,7 +191,15 @@ namespace Mictco_Box
         }
         private void btnReports_Click(object sender, EventArgs e)
         {
-
+            TransactionView frm = new TransactionView();
+            OpenForm(frm,0,0);
+        }
+        private void tabMdi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(tabMdi.SelectedIndex==0)
+            {
+                LoadMethod();
+            }
         }
         private void btnStaff_Click(object sender, EventArgs e)
         {

@@ -34,18 +34,18 @@ namespace Mictco_Box
         #region Events
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtStaffName.Text == string.Empty) { Messages.ErrorMessage("Please fill the details.");return; }
+            if (txtName.Text == string.Empty) { Messages.ErrorMessage("Please fill the details.");return; }
             if(iStaffId ==null || !db.Staffs.Any(x=> x.Id==iStaffId))
             {
                 if(isFirstEntry)
                 {
-                    if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtStaffName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
+                    if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
                 }
                 else
                 {
                     if (db.Staffs.FirstOrDefault(x => x.Id == User.iUserId).Name == "Admin")
                     {
-                        if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtStaffName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
+                        if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
                     }
                     else
                     {
@@ -56,7 +56,7 @@ namespace Mictco_Box
             }
             else
             {
-                if (ORMForSDF.UpdateToDatabaseObj(new Staff { Id = iStaffId, Name = txtStaffName.Text,Password=txtPassword.Text }, "Staff", "Id", iStaffId.toInt32(), Properties.Settings.Default.Connection)) { Messages.UpdateMessage(); btnClear_Click(null, null); };
+                if (ORMForSDF.UpdateToDatabaseObj(new Staff { Id = iStaffId, Name = txtName.Text,Password=txtPassword.Text }, "Staff", "Id", iStaffId.toInt32(), Properties.Settings.Default.Connection)) { Messages.UpdateMessage(); btnClear_Click(null, null); };
             }
         }
         private void btnClear_Click(object sender, EventArgs e)
@@ -65,12 +65,13 @@ namespace Mictco_Box
             iStaffId = null;
             dgvStaff.AutoGenerateColumns = false;
             dgvStaff.DataSource = db.Staffs.ToList();
-            txtStaffName.Focus();
+            txtName.Focus();
         }
         private void btnDelete_Click(object sender, EventArgs e)
         {
             if(Messages.DeleteConfirmationMessage() && iStaffId!=null)
             {
+                if(db.Transactions.Where(x=> x.FK_Staff == iStaffId).ToList().Count > 0) { Messages.ReferenceExistsMessage(); return; }
                 if (ORMForSDF.DeleteFromDatabase("Staff", "Id", iStaffId.toInt32(), Properties.Settings.Default.Connection)) { btnClear_Click(null, null); }
             }
         }
@@ -81,7 +82,7 @@ namespace Mictco_Box
                 Staff staff = db.Staffs.FirstOrDefault(x => x.Name == dgvStaff.CurrentRow.Cells[0].Value.ToString());
                 if (staff != null)
                 {
-                    txtStaffName.Text = staff.Name;
+                    txtName.Text = staff.Name;
                     txtPassword.Text = staff.Password;
                     iStaffId = staff.Id;  
                     if(staff.Id==User.iUserId)
@@ -100,11 +101,23 @@ namespace Mictco_Box
         {
             if(isFirstEntry)
             {
-                txtStaffName.Text = "Admin";
-                txtStaffName.Enabled = false;
+                txtName.Text = "Admin";
+                txtName.Enabled = false;
             }
             dgvStaff.AutoGenerateColumns = false;
-            dgvStaff.DataSource = db.Staffs.ToList();
+            var staff = db.Staffs.FirstOrDefault(x => x.Id == User.iUserId);
+            if (staff != null)
+            {
+                if (staff.Name == "Admin")
+                {
+                    dgvStaff.DataSource = db.Staffs.ToList();
+                }
+                else
+                {
+                    dgvStaff.DataSource = db.Staffs.Where(x => x.Id == User.iUserId).ToList();
+                }
+            }
+            this.ActiveControl = txtName;
         }
         #endregion
 

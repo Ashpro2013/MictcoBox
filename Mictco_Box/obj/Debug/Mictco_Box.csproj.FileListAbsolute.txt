@@ -16,7 +16,6 @@ E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.exe
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.pdb
 E:\Project\Mictco_Box\Mictco_Box\bin\Debug\Mictco_Box.exe
 E:\Project\Mictco_Box\Mictco_Box\bin\Debug\Mictco_Box.pdb
-E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csprojResolveAssemblyReference.cache
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Main.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Properties.Resources.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.BoxView.resources
@@ -24,7 +23,6 @@ E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.CustomerView.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.SlotView.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.StaffView.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csproj.GenerateResource.Cache
-E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.exe.licenses
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csprojAssemblyReference.cache
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Main.resources
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Properties.Resources.resources
@@ -41,3 +39,9 @@ F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.pdb
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.FormBase.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.FormBase.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Login.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csprojAssemblyReference.cache
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.TransactionView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csproj.Fody.CopyLocal.cache

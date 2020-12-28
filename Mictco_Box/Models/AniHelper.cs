@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlServerCe;
 using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -31,6 +32,57 @@ namespace Mictco_Box
                     item.Text = string.Empty;
                 }
             }
+        }
+        public static void CopyData(Object source, Object target)
+        {
+            Type sourceType = source.GetType();
+            Type targetType = target.GetType();
+            PropertyInfo[] srcProps = sourceType.GetProperties();
+            foreach (PropertyInfo srcProp in srcProps)
+            {
+                PropertyInfo targetProperty = targetType.GetProperty(srcProp.Name);
+                if (!srcProp.CanRead)
+                {
+                    continue;
+                }
+                if (targetProperty == null)
+                {
+                    continue;
+                }
+                if (!targetProperty.CanWrite)
+                {
+                    continue;
+                }
+                if (targetProperty.GetSetMethod(true) != null && targetProperty.GetSetMethod(true).IsPrivate)
+                {
+                    continue;
+                }
+                if ((targetProperty.GetSetMethod().Attributes & MethodAttributes.Static) != 0)
+                {
+                    continue;
+                }
+                if (!targetProperty.PropertyType.IsAssignableFrom(srcProp.PropertyType))
+                {
+                    continue;
+                }
+                // Passed all tests, lets set the value
+                try
+                {
+                    targetProperty.SetValue(target, srcProp.GetValue(source, null), null);
+                }
+                catch (Exception) { }
+            }
+        }
+        public static List<T> CopyListData<T>(List<object> listSource)
+        {
+            List<T> dsList = new List<T>();
+            foreach (object x in listSource)
+            {
+                T y = Activator.CreateInstance<T>();
+                CopyData(x, y);
+                dsList.Add(y);
+            }
+            return dsList;
         }
         public static string  NewDatabaseMethodCE(string Company)
         {
