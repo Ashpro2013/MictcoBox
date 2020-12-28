@@ -229,7 +229,7 @@
             this.btnClear.Size = new System.Drawing.Size(100, 30);
             this.btnClear.TabIndex = 19;
             this.btnClear.TabStop = false;
-            this.btnClear.Text = "Clear";
+            this.btnClear.Text = "&Clear";
             this.btnClear.UseVisualStyleBackColor = false;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
             // 
@@ -245,7 +245,7 @@
             this.btnDelete.Size = new System.Drawing.Size(100, 30);
             this.btnDelete.TabIndex = 18;
             this.btnDelete.TabStop = false;
-            this.btnDelete.Text = "Delete";
+            this.btnDelete.Text = "&Delete";
             this.btnDelete.UseVisualStyleBackColor = false;
             this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
             // 
@@ -261,7 +261,7 @@
             this.btnSave.Size = new System.Drawing.Size(100, 30);
             this.btnSave.TabIndex = 17;
             this.btnSave.TabStop = false;
-            this.btnSave.Text = "Save";
+            this.btnSave.Text = "&Save";
             this.btnSave.UseVisualStyleBackColor = false;
             this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
             // 
@@ -303,6 +303,7 @@
             // CustomerView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.CancelButton = this.btnClear;
             this.ClientSize = new System.Drawing.Size(934, 364);
             this.Controls.Add(this.cmbSlot);
             this.Controls.Add(this.label8);

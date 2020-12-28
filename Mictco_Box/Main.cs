@@ -32,6 +32,7 @@ namespace Mictco_Box
             slotButton = new Button();
             ButtonColorChangeMethod(slotButton, slot);
             slotButton.ForeColor = Color.White;
+            slotButton.FlatStyle = FlatStyle.Flat;
             slotButton.Text = slot.Name;
             slotButton.Tag = slot.Id;
             if (slot.FK_CustomerId != null && slot.OccupaidStatus==1)
@@ -200,6 +201,11 @@ namespace Mictco_Box
             {
                 LoadMethod();
             }
+        }
+        private void btnAllReport_Click(object sender, EventArgs e)
+        {
+            Report frm = new Report();
+            OpenForm(frm,0,0);
         }
         private void btnStaff_Click(object sender, EventArgs e)
         {

@@ -30,6 +30,9 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
             this.pnlNavigation = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.btnAllReport = new System.Windows.Forms.Button();
             this.btnReports = new System.Windows.Forms.Button();
             this.btnTransaction = new System.Windows.Forms.Button();
             this.btnMasters = new System.Windows.Forms.Button();
@@ -43,19 +46,19 @@
             this.tabMdi = new System.Windows.Forms.TabControl();
             this.tpDashboard = new System.Windows.Forms.TabPage();
             this.pnlSlots = new System.Windows.Forms.Panel();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.pnlNavigation.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.pnlTitle.SuspendLayout();
             this.tabMdi.SuspendLayout();
             this.tpDashboard.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // pnlNavigation
             // 
-            this.pnlNavigation.AutoScroll = true;
-            this.pnlNavigation.BackColor = System.Drawing.Color.Black;
+            this.pnlNavigation.BackColor = System.Drawing.Color.MidnightBlue;
+            this.pnlNavigation.Controls.Add(this.label2);
             this.pnlNavigation.Controls.Add(this.pictureBox1);
+            this.pnlNavigation.Controls.Add(this.btnAllReport);
             this.pnlNavigation.Controls.Add(this.btnReports);
             this.pnlNavigation.Controls.Add(this.btnTransaction);
             this.pnlNavigation.Controls.Add(this.btnMasters);
@@ -69,103 +72,151 @@
             this.pnlNavigation.Size = new System.Drawing.Size(225, 749);
             this.pnlNavigation.TabIndex = 4;
             // 
+            // label2
+            // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.Location = new System.Drawing.Point(77, 684);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(78, 16);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "8075958425";
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(-99, 608);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(381, 92);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 7;
+            this.pictureBox1.TabStop = false;
+            // 
+            // btnAllReport
+            // 
+            this.btnAllReport.BackColor = System.Drawing.Color.MidnightBlue;
+            this.btnAllReport.FlatAppearance.BorderSize = 0;
+            this.btnAllReport.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
+            this.btnAllReport.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
+            this.btnAllReport.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnAllReport.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAllReport.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
+            this.btnAllReport.Image = ((System.Drawing.Image)(resources.GetObject("btnAllReport.Image")));
+            this.btnAllReport.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.btnAllReport.Location = new System.Drawing.Point(-1, 444);
+            this.btnAllReport.Margin = new System.Windows.Forms.Padding(0);
+            this.btnAllReport.Name = "btnAllReport";
+            this.btnAllReport.Size = new System.Drawing.Size(225, 40);
+            this.btnAllReport.TabIndex = 6;
+            this.btnAllReport.Text = "Reports &All";
+            this.btnAllReport.UseVisualStyleBackColor = false;
+            this.btnAllReport.Click += new System.EventHandler(this.btnAllReport_Click);
+            // 
             // btnReports
             // 
-            this.btnReports.BackColor = System.Drawing.Color.Black;
+            this.btnReports.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnReports.FlatAppearance.BorderSize = 0;
             this.btnReports.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnReports.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnReports.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnReports.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnReports.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnReports.Image = ((System.Drawing.Image)(resources.GetObject("btnReports.Image")));
             this.btnReports.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnReports.Location = new System.Drawing.Point(0, 404);
+            this.btnReports.Location = new System.Drawing.Point(-1, 404);
             this.btnReports.Margin = new System.Windows.Forms.Padding(0);
             this.btnReports.Name = "btnReports";
             this.btnReports.Size = new System.Drawing.Size(225, 40);
             this.btnReports.TabIndex = 6;
-            this.btnReports.Text = "Reports";
+            this.btnReports.Text = "&Reports";
             this.btnReports.UseVisualStyleBackColor = false;
             this.btnReports.Click += new System.EventHandler(this.btnReports_Click);
             // 
             // btnTransaction
             // 
-            this.btnTransaction.BackColor = System.Drawing.Color.Black;
+            this.btnTransaction.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnTransaction.FlatAppearance.BorderSize = 0;
             this.btnTransaction.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnTransaction.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnTransaction.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnTransaction.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnTransaction.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnTransaction.Image = ((System.Drawing.Image)(resources.GetObject("btnTransaction.Image")));
             this.btnTransaction.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTransaction.Location = new System.Drawing.Point(0, 364);
+            this.btnTransaction.Location = new System.Drawing.Point(-1, 364);
             this.btnTransaction.Margin = new System.Windows.Forms.Padding(0);
             this.btnTransaction.Name = "btnTransaction";
             this.btnTransaction.Size = new System.Drawing.Size(225, 40);
             this.btnTransaction.TabIndex = 5;
-            this.btnTransaction.Text = "Staff";
+            this.btnTransaction.Text = "&Staff";
             this.btnTransaction.UseVisualStyleBackColor = false;
             this.btnTransaction.Click += new System.EventHandler(this.btnStaff_Click);
             // 
             // btnMasters
             // 
-            this.btnMasters.BackColor = System.Drawing.Color.Black;
+            this.btnMasters.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnMasters.FlatAppearance.BorderSize = 0;
             this.btnMasters.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnMasters.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnMasters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnMasters.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnMasters.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnMasters.Image = ((System.Drawing.Image)(resources.GetObject("btnMasters.Image")));
             this.btnMasters.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnMasters.Location = new System.Drawing.Point(0, 324);
+            this.btnMasters.Location = new System.Drawing.Point(-1, 324);
             this.btnMasters.Name = "btnMasters";
             this.btnMasters.Size = new System.Drawing.Size(225, 40);
             this.btnMasters.TabIndex = 4;
-            this.btnMasters.Text = "Customer";
+            this.btnMasters.Text = "&Customer";
             this.btnMasters.UseVisualStyleBackColor = false;
             this.btnMasters.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnFirm
             // 
-            this.btnFirm.BackColor = System.Drawing.Color.Black;
+            this.btnFirm.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnFirm.FlatAppearance.BorderSize = 0;
             this.btnFirm.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnFirm.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnFirm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnFirm.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFirm.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnFirm.Image = ((System.Drawing.Image)(resources.GetObject("btnFirm.Image")));
             this.btnFirm.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnFirm.Location = new System.Drawing.Point(0, 284);
+            this.btnFirm.Location = new System.Drawing.Point(-1, 284);
             this.btnFirm.Margin = new System.Windows.Forms.Padding(0);
             this.btnFirm.Name = "btnFirm";
             this.btnFirm.Size = new System.Drawing.Size(225, 40);
             this.btnFirm.TabIndex = 2;
-            this.btnFirm.Text = "Box";
+            this.btnFirm.Text = "&Box";
             this.btnFirm.UseVisualStyleBackColor = false;
             this.btnFirm.Click += new System.EventHandler(this.btnBox_Click);
             // 
             // btnDashBoard
             // 
-            this.btnDashBoard.BackColor = System.Drawing.Color.Black;
+            this.btnDashBoard.BackColor = System.Drawing.Color.MidnightBlue;
             this.btnDashBoard.FlatAppearance.BorderSize = 0;
             this.btnDashBoard.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gray;
             this.btnDashBoard.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Gray;
             this.btnDashBoard.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnDashBoard.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDashBoard.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
             this.btnDashBoard.Image = ((System.Drawing.Image)(resources.GetObject("btnDashBoard.Image")));
             this.btnDashBoard.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnDashBoard.Location = new System.Drawing.Point(0, 244);
+            this.btnDashBoard.Location = new System.Drawing.Point(-1, 244);
             this.btnDashBoard.Margin = new System.Windows.Forms.Padding(0);
             this.btnDashBoard.Name = "btnDashBoard";
             this.btnDashBoard.Size = new System.Drawing.Size(225, 40);
             this.btnDashBoard.TabIndex = 1;
-            this.btnDashBoard.Text = "Dashboard";
+            this.btnDashBoard.Text = "&Dashboard";
             this.btnDashBoard.UseVisualStyleBackColor = false;
             this.btnDashBoard.Click += new System.EventHandler(this.btnDashBoard_Click);
             // 
             // pnlTitle
             // 
-            this.pnlTitle.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(29)))), ((int)(((byte)(48)))), ((int)(((byte)(65)))));
+            this.pnlTitle.BackColor = System.Drawing.Color.MidnightBlue;
             this.pnlTitle.Controls.Add(this.lblUser);
             this.pnlTitle.Controls.Add(this.label1);
             this.pnlTitle.Controls.Add(this.btnMinimize);
@@ -221,6 +272,7 @@
             // 
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.BackColor = System.Drawing.Color.Transparent;
+            this.btnClose.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClose.FlatAppearance.BorderColor = System.Drawing.Color.LightGray;
             this.btnClose.FlatAppearance.BorderSize = 0;
             this.btnClose.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -270,20 +322,11 @@
             this.pnlSlots.Size = new System.Drawing.Size(1066, 692);
             this.pnlSlots.TabIndex = 0;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(-30, 654);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(251, 92);
-            this.pictureBox1.TabIndex = 7;
-            this.pictureBox1.TabStop = false;
-            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.btnClose;
             this.ClientSize = new System.Drawing.Size(1320, 749);
             this.Controls.Add(this.tabMdi);
             this.Controls.Add(this.pnlTitle);
@@ -295,11 +338,12 @@
             this.Text = "Main";
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlNavigation.ResumeLayout(false);
+            this.pnlNavigation.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.pnlTitle.ResumeLayout(false);
             this.pnlTitle.PerformLayout();
             this.tabMdi.ResumeLayout(false);
             this.tpDashboard.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -321,5 +365,7 @@
         private System.Windows.Forms.TabPage tpDashboard;
         private System.Windows.Forms.Panel pnlSlots;
         private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.Button btnAllReport;
+        private System.Windows.Forms.Label label2;
     }
 }

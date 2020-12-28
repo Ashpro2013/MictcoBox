@@ -39,7 +39,12 @@ namespace Mictco_Box
             {
                 if(isFirstEntry)
                 {
-                    if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
+                    if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtName.Text, Password = txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) 
+                    {
+                        Login frm = new Login();
+                        this.Hide();
+                        frm.Show();
+                    }
                 }
                 else
                 {
@@ -51,7 +56,6 @@ namespace Mictco_Box
                     {
                         Messages.ErrorMessage("Only Admin have power to create new User.");
                     }
-
                 }
             }
             else
@@ -94,7 +98,6 @@ namespace Mictco_Box
                         txtPassword.Enabled = false;
                     }
                 }
-
             }
         }
         private void StaffView_Load(object sender, EventArgs e)
@@ -119,7 +122,10 @@ namespace Mictco_Box
             }
             this.ActiveControl = txtName;
         }
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSave_Click(null, null); }
+        }
         #endregion
-
     }
 }

@@ -39,9 +39,9 @@ F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.pdb
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.FormBase.resources
-E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.FormBase.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Login.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csprojAssemblyReference.cache
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.TransactionView.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csproj.Fody.CopyLocal.cache
+E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Report.resources

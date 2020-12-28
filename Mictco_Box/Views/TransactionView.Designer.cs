@@ -46,20 +46,20 @@
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(205, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(4);
+            this.txtSearch.Location = new System.Drawing.Point(273, 14);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(633, 20);
+            this.txtSearch.Size = new System.Drawing.Size(843, 22);
             this.txtSearch.TabIndex = 1;
             this.txtSearch.TextChanged += new System.EventHandler(this.txtPanNo_TextChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(11, 11);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(15, 14);
+            this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 13);
+            this.label3.Size = new System.Drawing.Size(215, 16);
             this.label3.TabIndex = 0;
             this.label3.Text = "Pan Number/Name/Phonenumber:";
             // 
@@ -81,11 +81,12 @@
             this.col_Status,
             this.col_Staff,
             this.col_Remarks});
-            this.dgvReports.Location = new System.Drawing.Point(146, 39);
+            this.dgvReports.Location = new System.Drawing.Point(137, 48);
+            this.dgvReports.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvReports.Name = "dgvReports";
             this.dgvReports.ReadOnly = true;
             this.dgvReports.RowHeadersVisible = false;
-            this.dgvReports.Size = new System.Drawing.Size(872, 543);
+            this.dgvReports.Size = new System.Drawing.Size(1168, 668);
             this.dgvReports.TabIndex = 3;
             // 
             // col_SL
@@ -160,11 +161,12 @@
             this.dgvSlots.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSlots.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Name});
-            this.dgvSlots.Location = new System.Drawing.Point(14, 40);
+            this.dgvSlots.Location = new System.Drawing.Point(19, 49);
+            this.dgvSlots.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.dgvSlots.Name = "dgvSlots";
             this.dgvSlots.ReadOnly = true;
             this.dgvSlots.RowHeadersVisible = false;
-            this.dgvSlots.Size = new System.Drawing.Size(117, 535);
+            this.dgvSlots.Size = new System.Drawing.Size(104, 665);
             this.dgvSlots.TabIndex = 2;
             this.dgvSlots.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvSlots_CellContentClick);
             // 
@@ -177,13 +179,15 @@
             // 
             // TransactionView
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1030, 587);
+            this.ClientSize = new System.Drawing.Size(1312, 722);
             this.Controls.Add(this.dgvSlots);
             this.Controls.Add(this.dgvReports);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
+            this.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "TransactionView";
             this.Text = "Report";
             this.Load += new System.EventHandler(this.TransactionView_Load);

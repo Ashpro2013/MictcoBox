@@ -77,12 +77,6 @@ namespace Mictco_Box
             }
             dgvReports.AutoGenerateColumns = false;
             dgvReports.DataSource = exTransactions;
-
-            //DataTable dt = new DataTable();
-            //dt = ORMForSDF.GetDataTable("Select ROW_NUMBER()  AS SL, Convert(nvarchar(10),CONVERT(datetime,Date,105),105) as Date, " +
-            //    "Slot.Name as Slot,Customer.Name as Customer,Status,staff.Name as Staff, Remarks From Transactions Join Customer on Transactions.FK_Customer = Customer.Id " +
-            //    " Join Slot on Transactions.FK_Slot = Slot.Id Join Staff on Transactions.FK_Staff = Staff.Id Where FK_Slot=='"+slot.Id+"' Order By Id", Properties.Settings.Default.Connection);
-            //dgvReports.DataSource = dt;
         }
         #endregion
 

@@ -21,7 +21,6 @@ namespace Mictco_Box
         {
             InitializeComponent();
         }
-
         private void BoxView_Load(object sender, EventArgs e)
         {
             dgvStaff.AutoGenerateColumns = false;
@@ -33,6 +32,7 @@ namespace Mictco_Box
             cmbStaff.Enabled = false;
             this.ActiveControl = txtName;
         }
+
 
         private void dgvStaff_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -130,6 +130,15 @@ namespace Mictco_Box
             if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
             {
                 e.Handled = true;
+            }
+        }
+
+        private void txtSlotCount_KeyDown(object sender, KeyEventArgs e)
+        {
+            if(e.KeyCode==Keys.Enter)
+            {
+                txtSlotCount_Validated(null, null);
+                btnSave_Click(null, null);
             }
         }
     }
