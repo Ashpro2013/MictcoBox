@@ -16,7 +16,6 @@ namespace Mictco_Box
         DBContext db = new DBContext();
         Button slotButton;
         int x = 10, y = 10;
-        string path;
         #endregion
 
         #region Constructor
@@ -31,13 +30,13 @@ namespace Mictco_Box
         {
             
             slotButton = new Button();
-            if (!slot.OccupaidStatus)
+            if (slot.OccupaidStatus==0)
             {
                 slotButton.BackColor = Color.Blue;
             }
             else
             {
-                if (slot.InStatus)
+                if (slot.InStatus==1)
                 {
                     slotButton.BackColor = Color.Red;
                 }
@@ -66,7 +65,6 @@ namespace Mictco_Box
                 pnlSlots.Controls.Add(slotButton);
             }
             x = x + 110;
-           
         }
         private void OpenForm(Form frm, int X = 25, int Y = 25, string sForm = null)
         {
@@ -114,7 +112,6 @@ namespace Mictco_Box
                 MessageBox.Show(ex.Message);
             }
         }
-
         private void Form_FormClosed(object sender, FormClosedEventArgs e)
         {
             Form form = (Form)sender;
@@ -126,7 +123,6 @@ namespace Mictco_Box
             }
             if (form.Name == "BoxView") { LoadMethod(); }
         }
-
         void slotButton_Click(object sender, EventArgs e)
         {
             Button btnSlot = (Button)sender;
@@ -135,13 +131,13 @@ namespace Mictco_Box
             frm.slot = slot;
             if (frm.ShowDialog() == DialogResult.OK)
             {
-                if (!slot.OccupaidStatus)
+                if (slot.OccupaidStatus==0)
                 {
                     btnSlot.BackColor = Color.Blue;
                 }
                 else
                 {
-                    if (slot.InStatus)
+                    if (slot.InStatus==1)
                     {
                         btnSlot.BackColor = Color.Red;
                     }
@@ -153,6 +149,7 @@ namespace Mictco_Box
             }
         }
         #endregion
+
         #region Events
         private void LoadMethod()
         {
@@ -181,44 +178,36 @@ namespace Mictco_Box
             BoxView frm = new BoxView();
             OpenForm(frm);
         }
-
         void frm_FormClosing(object sender, FormClosingEventArgs e)
         {
             LoadMethod();
         }
-       
-
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerView frm = new CustomerView();
             OpenForm(frm);
         }
-
         private void btnClose_Click(object sender, EventArgs e)
         {
             Environment.Exit(0);
         }
-
         private void btnMinimize_Click(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Minimized;
         }
-
         private void btnDashBoard_Click(object sender, EventArgs e)
         {
             this.tabMdi.SelectedTab = tpDashboard;
         }
-
         private void btnReports_Click(object sender, EventArgs e)
         {
 
         }
-
         private void btnStaff_Click(object sender, EventArgs e)
         {
             StaffView frm = new StaffView();
             OpenForm(frm);
         }
-    }
         #endregion
+    }
 }

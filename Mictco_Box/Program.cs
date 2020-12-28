@@ -25,7 +25,7 @@ namespace Mictco_Box
             DBContext db = new DBContext();
             if(db.Staffs.Count<1)
             {
-
+                Application.Run(new StaffView(true));
             }
             else
             {

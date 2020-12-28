@@ -164,8 +164,8 @@
             // 
             this.cmbInOrOut.FormattingEnabled = true;
             this.cmbInOrOut.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
+            "No",
+            "Yes"});
             this.cmbInOrOut.Location = new System.Drawing.Point(154, 166);
             this.cmbInOrOut.Name = "cmbInOrOut";
             this.cmbInOrOut.Size = new System.Drawing.Size(86, 24);
@@ -185,8 +185,8 @@
             // 
             this.cmbOccupaid.FormattingEnabled = true;
             this.cmbOccupaid.Items.AddRange(new object[] {
-            "Yes",
-            "No"});
+            "No",
+            "Yes"});
             this.cmbOccupaid.Location = new System.Drawing.Point(360, 166);
             this.cmbOccupaid.Name = "cmbOccupaid";
             this.cmbOccupaid.Size = new System.Drawing.Size(86, 24);

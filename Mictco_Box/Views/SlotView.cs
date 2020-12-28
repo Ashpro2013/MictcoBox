@@ -33,10 +33,12 @@ namespace Mictco_Box
             cmbStaff.ValueMember = "Id";
             cmbStaff.DisplayMember = "Name";
             cmbStaff.DataSource = db.Staffs.ToList();
+            cmbStaff.SelectedValue = User.iUserId;
+            cmbStaff.Enabled = false;
             lblBoxName.Text = db.Boxes.FirstOrDefault(x => x.Id == slot.FK_BoxId).Name;
             lblSlotName.Text = slot.Name;
-            //cbIn.Checked = slot.InStatus;
-            //cbOccupied.Checked = slot.OccupaidStatus;
+            cmbInOrOut.SelectedIndex= slot.InStatus;
+            cmbOccupaid.SelectedIndex = slot.OccupaidStatus;
             if (slot.FK_CustomerId != null)
             {
                 cmbCustomer.SelectedValue = slot.FK_CustomerId;
@@ -49,8 +51,8 @@ namespace Mictco_Box
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            //slot.InStatus = cbIn.Checked;
-            //slot.OccupaidStatus = cbOccupied.Checked;
+            slot.InStatus = cmbInOrOut.SelectedIndex;
+            slot.OccupaidStatus = cmbOccupaid.SelectedIndex;
             slot.FK_CustomerId = cmbCustomer.SelectedValue.ToInt32();
             slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
             if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
