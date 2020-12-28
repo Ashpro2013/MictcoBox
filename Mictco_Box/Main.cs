@@ -7,11 +7,10 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.IO;
 namespace Mictco_Box
 {
-    public partial class Main : DevExpress.XtraEditors.XtraForm
+    public partial class Main : Form
     {
         #region Private Variables
         DBContext db = new DBContext();
@@ -50,6 +49,15 @@ namespace Mictco_Box
             slotButton.ForeColor = Color.White;
             slotButton.Text = slot.Name;
             slotButton.Tag = slot.Id;
+            if (slot.FK_CustomerId != null)
+            {
+                ToolTip ttMain = new ToolTip();
+                ttMain.AutoPopDelay = 5000;
+                ttMain.InitialDelay = 1000;
+                ttMain.ReshowDelay = 500;
+                ttMain.ShowAlways = true;
+                ttMain.SetToolTip(this.slotButton, db.Customers.FirstOrDefault(x => x.Id == slot.FK_CustomerId).Name);
+            }
             slotButton.Click += slotButton_Click;
             slotButton.Size = new Size(100, 30);
             slotButton.Location = new Point(x, y);
@@ -59,6 +67,64 @@ namespace Mictco_Box
             }
             x = x + 110;
            
+        }
+        private void OpenForm(Form frm, int X = 25, int Y = 25, string sForm = null)
+        {
+            try
+            {
+                if (frm.IsDisposed)
+                {
+                    Type type = frm.GetType();
+                    Form form = (Form)Activator.CreateInstance(type);
+                    form.TopLevel = false;
+                    TabPage tbp = new TabPage();
+                    tbp.Name = frm.Name;
+                    tbp.Text = frm.Text;
+                    tbp.BackgroundImageLayout = ImageLayout.Stretch;
+                    tbp.BackColor = Color.FromArgb(32, 30, 45);
+                    this.tabMdi.TabPages.Add(tbp);
+                    this.tabMdi.SelectedTab = tbp;
+                    tbp.Controls.Add(form);
+                    form.Location = new Point(X, Y);
+                    form.FormClosed += Form_FormClosed;
+                    form.Show();
+                    form.Focus();
+                    form.BringToFront();
+                }
+                else
+                {
+                    frm.TopLevel = false;
+                    TabPage tbp = new TabPage();
+                    tbp.Name = frm.Name;
+                    tbp.Text = frm.Text;
+                    tbp.BackgroundImageLayout = ImageLayout.Stretch;
+                    tbp.BackColor = Color.FromArgb(32, 30, 45);
+                    this.tabMdi.TabPages.Add(tbp);
+                    this.tabMdi.SelectedTab = tbp;
+                    tbp.Controls.Add(frm);
+                    frm.Location = new Point(X, Y);
+                    frm.FormClosed += Form_FormClosed;
+                    frm.Show();
+                    frm.Focus();
+                    frm.BringToFront();
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private void Form_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            Form form = (Form)sender;
+            if (form.Parent is TabPage)
+            {
+                TabPage tbp = (TabPage)form.Parent;
+                tabMdi.TabPages.Remove(tbp);
+                tabMdi.SelectedTab = tabMdi.TabPages[0];
+            }
+            if (form.Name == "BoxView") { LoadMethod(); }
         }
 
         void slotButton_Click(object sender, EventArgs e)
@@ -106,24 +172,14 @@ namespace Mictco_Box
         private void Main_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
-            if (Properties.Settings.Default.Connection==string.Empty)
-            {
-              path = AniHelper.NewDatabaseMethodCE("MictCoDB");
-              //path = @"Data Source=DESKTOP-2S972LR\SQLR2;Initial Catalog=MICTCODB;User ID=sa;Password=wf";
-              Properties.Settings.Default.Connection = path;
-              Properties.Settings.Default.Save();
-            }
-            
-           
-            
+            lblUser.Text = db.Staffs.FirstOrDefault(x => x.Id == User.iUserId).Name;
             LoadMethod();
         }
-
         private void btnBox_Click(object sender, EventArgs e)
         {
+            
             BoxView frm = new BoxView();
-            frm.FormClosing += frm_FormClosing;
-            frm.ShowDialog();
+            OpenForm(frm);
         }
 
         void frm_FormClosing(object sender, FormClosingEventArgs e)
@@ -135,13 +191,33 @@ namespace Mictco_Box
         private void btnCustomer_Click(object sender, EventArgs e)
         {
             CustomerView frm = new CustomerView();
-            frm.ShowDialog();
+            OpenForm(frm);
+        }
+
+        private void btnClose_Click(object sender, EventArgs e)
+        {
+            Environment.Exit(0);
+        }
+
+        private void btnMinimize_Click(object sender, EventArgs e)
+        {
+            this.WindowState = FormWindowState.Minimized;
+        }
+
+        private void btnDashBoard_Click(object sender, EventArgs e)
+        {
+            this.tabMdi.SelectedTab = tpDashboard;
+        }
+
+        private void btnReports_Click(object sender, EventArgs e)
+        {
+
         }
 
         private void btnStaff_Click(object sender, EventArgs e)
         {
             StaffView frm = new StaffView();
-            frm.ShowDialog();
+            OpenForm(frm);
         }
     }
         #endregion

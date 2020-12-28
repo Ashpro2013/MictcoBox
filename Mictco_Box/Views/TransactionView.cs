@@ -7,11 +7,10 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Mictco_Box.Views
 {
-    public partial class TransactionView : DevExpress.XtraEditors.XtraForm
+    public partial class TransactionView : Form
     {
         public TransactionView()
         {

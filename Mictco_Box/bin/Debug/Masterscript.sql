@@ -14,7 +14,8 @@ GO
 Create Table Staff
 (
 Id int  IDENTITY(1, 1) NOT NULL primary key,
-Name nvarchar(100) NULL
+Name nvarchar(100) NULL,
+Password nvarchar(100) NULL
 )
 GO
 Create Table Box

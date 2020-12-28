@@ -29,32 +29,25 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new DevExpress.XtraEditors.TextEdit();
+            this.txtName = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCity = new DevExpress.XtraEditors.TextEdit();
+            this.txtCity = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtPanNo = new DevExpress.XtraEditors.TextEdit();
+            this.txtPanNo = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPhone = new DevExpress.XtraEditors.TextEdit();
+            this.txtPhone = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEmail = new DevExpress.XtraEditors.TextEdit();
+            this.txtEmail = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCompany = new DevExpress.XtraEditors.TextEdit();
+            this.txtCompany = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtGSTNo = new DevExpress.XtraEditors.TextEdit();
+            this.txtGSTNo = new System.Windows.Forms.TextBox();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_PAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCity.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPanNo.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGSTNo.Properties)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -264,7 +257,6 @@
             // 
             // CustomerView
             // 
-            this.Appearance.Options.UseFont = true;
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.ClientSize = new System.Drawing.Size(934, 364);
             this.Controls.Add(this.btnClear);
@@ -291,13 +283,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CustomerView";
             this.Load += new System.EventHandler(this.CustomerView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.txtName.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCity.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPanNo.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtPhone.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtEmail.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtCompany.Properties)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.txtGSTNo.Properties)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -307,19 +292,19 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private DevExpress.XtraEditors.TextEdit txtName;
+        private System.Windows.Forms.TextBox txtName;
         private System.Windows.Forms.Label label2;
-        private DevExpress.XtraEditors.TextEdit txtCity;
+        private System.Windows.Forms.TextBox txtCity;
         private System.Windows.Forms.Label label3;
-        private DevExpress.XtraEditors.TextEdit txtPanNo;
+        private System.Windows.Forms.TextBox txtPanNo;
         private System.Windows.Forms.Label label4;
-        private DevExpress.XtraEditors.TextEdit txtPhone;
+        private System.Windows.Forms.TextBox txtPhone;
         private System.Windows.Forms.Label label5;
-        private DevExpress.XtraEditors.TextEdit txtEmail;
+        private System.Windows.Forms.TextBox txtEmail;
         private System.Windows.Forms.Label label6;
-        private DevExpress.XtraEditors.TextEdit txtCompany;
+        private System.Windows.Forms.TextBox txtCompany;
         private System.Windows.Forms.Label label7;
-        private DevExpress.XtraEditors.TextEdit txtGSTNo;
+        private System.Windows.Forms.TextBox txtGSTNo;
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;

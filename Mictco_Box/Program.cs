@@ -16,7 +16,22 @@ namespace Mictco_Box
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+            if (Properties.Settings.Default.Connection == string.Empty)
+            {
+                string path = AniHelper.NewDatabaseMethodCE("MictCoDB");
+                Properties.Settings.Default.Connection = path;
+                Properties.Settings.Default.Save();
+            }
+            DBContext db = new DBContext();
+            if(db.Staffs.Count<1)
+            {
+
+            }
+            else
+            {
+                Application.Run(new Login());
+
+            }
         }
     }
 }

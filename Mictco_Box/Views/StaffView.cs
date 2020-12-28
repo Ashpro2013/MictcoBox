@@ -7,11 +7,10 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Mictco_Box
 {
-    public partial class StaffView : DevExpress.XtraEditors.XtraForm
+    public partial class StaffView : Form
     {
         int? iStaffId;
         DBContext db = new DBContext();
@@ -25,13 +24,12 @@ namespace Mictco_Box
             if (txtStaffName.Text == string.Empty) { Messages.ErrorMessage("Please fill the details.");return; }
             if(iStaffId ==null || !db.Staffs.Any(x=> x.Id==iStaffId))
             {
-                if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtStaffName.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
+                if (ORMForSDF.InsertToDatabaseObj(new Staff { Id = null, Name = txtStaffName.Text,Password= txtPassword.Text }, "Staff", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
             }
             else
             {
-                if (ORMForSDF.UpdateToDatabaseObj(new Staff { Id = iStaffId, Name = txtStaffName.Text }, "Staff", "Id", iStaffId.toInt32(), Properties.Settings.Default.Connection)) { Messages.UpdateMessage(); btnClear_Click(null, null); };
+                if (ORMForSDF.UpdateToDatabaseObj(new Staff { Id = iStaffId, Name = txtStaffName.Text,Password=txtPassword.Text }, "Staff", "Id", iStaffId.toInt32(), Properties.Settings.Default.Connection)) { Messages.UpdateMessage(); btnClear_Click(null, null); };
             }
-	
         }
 
         private void btnClear_Click(object sender, EventArgs e)

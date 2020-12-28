@@ -26,7 +26,7 @@ namespace Mictco_Box
         {
             foreach (Control item in form.Controls)
             {
-                if (item is DevExpress.XtraEditors.TextEdit)
+                if (item is System.Windows.Forms.TextBox)
                 {
                     item.Text = string.Empty;
                 }
@@ -78,10 +78,9 @@ namespace Mictco_Box
                 }
                 return strConnection;
             }
-            catch (Exception ex)
+            catch (Exception )
             {
                 return strConnection;
-                Messages.ErrorMessage(ex.Message + " + " + query);
             }
         }
 

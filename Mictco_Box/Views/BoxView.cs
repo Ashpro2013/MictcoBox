@@ -7,12 +7,11 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 using System.Xml;
 
 namespace Mictco_Box
 {
-    public partial class BoxView : DevExpress.XtraEditors.XtraForm
+    public partial class BoxView : Form
     {
         #region Private Variables
         int? iBoxId;

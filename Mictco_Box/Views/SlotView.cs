@@ -7,11 +7,10 @@ using System.Text;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using DevExpress.XtraEditors;
 
 namespace Mictco_Box
 {
-    public partial class SlotView : DevExpress.XtraEditors.XtraForm
+    public partial class SlotView : Form
     {
         #region Public Properies
         public Slot slot { get; set; }
@@ -36,8 +35,8 @@ namespace Mictco_Box
             cmbStaff.DataSource = db.Staffs.ToList();
             lblBoxName.Text = db.Boxes.FirstOrDefault(x => x.Id == slot.FK_BoxId).Name;
             lblSlotName.Text = slot.Name;
-            cbIn.Checked = slot.InStatus;
-            cbOccupied.Checked = slot.OccupaidStatus;
+            //cbIn.Checked = slot.InStatus;
+            //cbOccupied.Checked = slot.OccupaidStatus;
             if (slot.FK_CustomerId != null)
             {
                 cmbCustomer.SelectedValue = slot.FK_CustomerId;
@@ -50,8 +49,8 @@ namespace Mictco_Box
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            slot.InStatus = cbIn.Checked;
-            slot.OccupaidStatus = cbOccupied.Checked;
+            //slot.InStatus = cbIn.Checked;
+            //slot.OccupaidStatus = cbOccupied.Checked;
             slot.FK_CustomerId = cmbCustomer.SelectedValue.ToInt32();
             slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
             if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
