@@ -1,0 +1,7 @@
+E:\Project\Mictco_Box\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.Properties.Resources.resources
+E:\Project\Mictco_Box\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csproj.GenerateResource.Cache
+E:\Project\Mictco_Box\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.dll.config
+E:\Project\Mictco_Box\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.dll
+E:\Project\Mictco_Box\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.pdb
+E:\Project\Mictco_Box\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.dll
+E:\Project\Mictco_Box\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.pdb

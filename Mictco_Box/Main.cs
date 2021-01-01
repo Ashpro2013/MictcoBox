@@ -162,6 +162,10 @@ namespace Mictco_Box
             this.WindowState = FormWindowState.Maximized;
             lblUser.Text = db.Staffs.FirstOrDefault(x => x.Id == User.iUserId).Name;
             LoadMethod();
+            if (db.Boxes.Count == 0)
+            {
+                btnBox_Click(null, null);
+            }
         }
         private void btnBox_Click(object sender, EventArgs e)
         {
@@ -180,7 +184,10 @@ namespace Mictco_Box
         }
         private void btnClose_Click(object sender, EventArgs e)
         {
-            Environment.Exit(0);
+            if (Messages.DialogMessage("Do You want close the application"))
+            {
+                Environment.Exit(0);
+            }
         }
         private void btnMinimize_Click(object sender, EventArgs e)
         {

@@ -30,12 +30,12 @@
         {
             this.btnClear = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtName = new MictcoUsercontrol.MictcoTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnDelete = new System.Windows.Forms.Button();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new MictcoUsercontrol.MictcoTextBox();
             this.label2 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
@@ -43,6 +43,7 @@
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
@@ -180,12 +181,12 @@
 
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtName;
+        private MictcoUsercontrol.MictcoTextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Name;
-        private System.Windows.Forms.TextBox txtPassword;
+        private MictcoUsercontrol.MictcoTextBox txtPassword;
         private System.Windows.Forms.Label label2;
     }
 }

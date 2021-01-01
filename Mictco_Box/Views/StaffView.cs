@@ -106,6 +106,11 @@ namespace Mictco_Box
             {
                 txtName.Text = "Admin";
                 txtName.Enabled = false;
+                this.ActiveControl = txtPassword;
+            }
+            else
+            {
+                this.ActiveControl = txtName;
             }
             dgvStaff.AutoGenerateColumns = false;
             var staff = db.Staffs.FirstOrDefault(x => x.Id == User.iUserId);
@@ -120,7 +125,6 @@ namespace Mictco_Box
                     dgvStaff.DataSource = db.Staffs.Where(x => x.Id == User.iUserId).ToList();
                 }
             }
-            this.ActiveControl = txtName;
         }
         private void txtPassword_KeyDown(object sender, KeyEventArgs e)
         {

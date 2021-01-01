@@ -27,7 +27,7 @@ namespace Mictco_Box
         {
             foreach (Control item in form.Controls)
             {
-                if (item is System.Windows.Forms.TextBox)
+                if (item is MictcoUsercontrol.MictcoTextBox)
                 {
                     item.Text = string.Empty;
                 }

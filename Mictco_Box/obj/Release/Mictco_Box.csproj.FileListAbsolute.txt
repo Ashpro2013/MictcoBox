@@ -1,0 +1,13 @@
+E:\Project\Mictco_Box\Mictco_Box\bin\Release\Mictco_Box.exe.config
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.Main.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.Properties.Resources.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.BoxView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.CustomerView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.Login.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.Report.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.SlotView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.StaffView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.TransactionView.resources
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.csproj.GenerateResource.Cache
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.exe
+E:\Project\Mictco_Box\Mictco_Box\obj\Release\Mictco_Box.pdb

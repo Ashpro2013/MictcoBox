@@ -31,9 +31,9 @@ namespace Mictco_Box
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Login));
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.txtPassword = new System.Windows.Forms.TextBox();
+            this.txtPassword = new MictcoUsercontrol.MictcoTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtStaffName = new System.Windows.Forms.TextBox();
+            this.txtStaffName = new MictcoUsercontrol.MictcoTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.btnCancel = new System.Windows.Forms.Button();
             this.btnLogin = new System.Windows.Forms.Button();
@@ -165,9 +165,9 @@ namespace Mictco_Box
         #endregion
 
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txtPassword;
+        private MictcoUsercontrol.MictcoTextBox txtPassword;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtStaffName;
+        private MictcoUsercontrol.MictcoTextBox txtStaffName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnLogin;

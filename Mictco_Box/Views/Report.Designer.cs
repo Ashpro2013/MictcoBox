@@ -30,7 +30,7 @@ namespace Mictco_Box
         private void InitializeComponent()
         {
             this.dgvReports = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.txtSearch = new MictcoUsercontrol.MictcoTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.col_SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -179,7 +179,7 @@ namespace Mictco_Box
         #endregion
 
         private System.Windows.Forms.DataGridView dgvReports;
-        private System.Windows.Forms.TextBox txtSearch;
+        private MictcoUsercontrol.MictcoTextBox txtSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_SL;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Customer;

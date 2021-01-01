@@ -31,7 +31,7 @@
         {
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtName = new MictcoUsercontrol.MictcoTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStaff = new System.Windows.Forms.ComboBox();
             this.lbSlots = new System.Windows.Forms.ListBox();
@@ -40,7 +40,7 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
-            this.txtSlotCount = new System.Windows.Forms.TextBox();
+            this.txtSlotCount = new MictcoUsercontrol.MictcoTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -210,7 +210,7 @@
 
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtName;
+        private MictcoUsercontrol.MictcoTextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStaff;
         private System.Windows.Forms.ListBox lbSlots;
@@ -219,6 +219,6 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
-        private System.Windows.Forms.TextBox txtSlotCount;
+        private MictcoUsercontrol.MictcoTextBox txtSlotCount;
     }
 }

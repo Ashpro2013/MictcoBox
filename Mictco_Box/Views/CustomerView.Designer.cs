@@ -29,19 +29,19 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.txtName = new System.Windows.Forms.TextBox();
+            this.txtName = new MictcoUsercontrol.MictcoTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCity = new System.Windows.Forms.TextBox();
+            this.txtCity = new MictcoUsercontrol.MictcoTextBox();
             this.label3 = new System.Windows.Forms.Label();
-            this.txtPanNo = new System.Windows.Forms.TextBox();
+            this.txtPanNo = new MictcoUsercontrol.MictcoTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPhone = new System.Windows.Forms.TextBox();
+            this.txtPhone = new MictcoUsercontrol.MictcoTextBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.txtEmail = new System.Windows.Forms.TextBox();
+            this.txtEmail = new MictcoUsercontrol.MictcoTextBox();
             this.label6 = new System.Windows.Forms.Label();
-            this.txtCompany = new System.Windows.Forms.TextBox();
+            this.txtCompany = new MictcoUsercontrol.MictcoTextBox();
             this.label7 = new System.Windows.Forms.Label();
-            this.txtGSTNo = new System.Windows.Forms.TextBox();
+            this.txtGSTNo = new MictcoUsercontrol.MictcoTextBox();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_PAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -341,19 +341,19 @@
         #endregion
 
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox txtName;
+        private MictcoUsercontrol.MictcoTextBox txtName;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox txtCity;
+        private MictcoUsercontrol.MictcoTextBox txtCity;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.TextBox txtPanNo;
+        private MictcoUsercontrol.MictcoTextBox txtPanNo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox txtPhone;
+        private MictcoUsercontrol.MictcoTextBox txtPhone;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.TextBox txtEmail;
+        private MictcoUsercontrol.MictcoTextBox txtEmail;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.TextBox txtCompany;
+        private MictcoUsercontrol.MictcoTextBox txtCompany;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox txtGSTNo;
+        private MictcoUsercontrol.MictcoTextBox txtGSTNo;
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;

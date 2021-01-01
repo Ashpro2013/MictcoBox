@@ -114,6 +114,7 @@ namespace Mictco_Box
         }
         private void BindCombo(List<Slot> slots)
         {
+            if (slots.Count == 0) { Messages.ErrorMessage("Please create Boxes and Slot first.");  }
             cmbSlot.ValueMember = "Id";
             cmbSlot.DisplayMember = "Name";
             cmbSlot.DataSource = slots;

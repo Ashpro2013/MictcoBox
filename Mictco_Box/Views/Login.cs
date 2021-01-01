@@ -31,7 +31,7 @@ namespace Mictco_Box
         private void btnLogin_Click(object sender, EventArgs e)
         {
             if(txtStaffName.Text ==string.Empty || txtPassword.Text == string.Empty) { Messages.ErrorMessage("Please enter the details."); return; }
-            var staff = db.Staffs.FirstOrDefault(x => x.Name == txtStaffName.Text && x.Password == txtPassword.Text);
+            var staff = db.Staffs.FirstOrDefault(x => x.Name.ToLower() == txtStaffName.Text.ToLower() && x.Password == txtPassword.Text);
             if (staff != null)
             {
                 User.iUserId = staff.Id.ToInt32();

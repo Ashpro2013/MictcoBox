@@ -60,7 +60,7 @@ namespace Mictco_Box
         }
         public static bool DialogMessage(string Msg)
         {
-            if (MessageBox.Show(Msg, Properties.Settings.Default.strManufaturer, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.OK)
+            if (MessageBox.Show(Msg, Properties.Settings.Default.strManufaturer, MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 return true;
             }
