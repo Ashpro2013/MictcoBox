@@ -38,10 +38,29 @@ F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe.config
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.pdb
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
-F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.FormBase.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Login.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.TransactionView.resources
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.Report.resources
 E:\Project\Mictco_Box\Mictco_Box\bin\Debug\MictcoUsercontrol.dll
 E:\Project\Mictco_Box\Mictco_Box\bin\Debug\MictcoUsercontrol.pdb
 E:\Project\Mictco_Box\Mictco_Box\obj\Debug\Mictco_Box.csprojResolveAssemblyReference.cache
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.pdb
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.dll.config
+F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Report.resources
+F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.TransactionView.resources
+F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CopyComplete
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\FireSharp.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Newtonsoft.Json.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Extensions.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Primitives.dll
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.xml
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Newtonsoft.Json.xml
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Extensions.xml
+F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Primitives.xml
+F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.App.config

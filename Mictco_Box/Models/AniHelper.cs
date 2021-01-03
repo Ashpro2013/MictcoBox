@@ -7,6 +7,8 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Management;
+using System.Net;
 
 namespace Mictco_Box
 {
@@ -135,6 +137,37 @@ namespace Mictco_Box
                 return strConnection;
             }
         }
+        public static string getCPUID()
+        {
+            string cpuInfo = "";
 
+            ManagementClass managClass = new ManagementClass("win32_processor");
+            ManagementObjectCollection managCollec = managClass.GetInstances();
+
+            foreach (ManagementObject managObj in managCollec)
+            {
+                if (cpuInfo == "")
+                {
+                    //Get only the first CPU's ID
+                    cpuInfo = managObj.Properties["processorID"].Value.ToString();
+                    break;
+                }
+            }
+
+            return cpuInfo;
+        }
+        public static bool CheckInternet()
+        {
+            try
+            {
+                using (var client = new WebClient())
+                using (client.OpenRead("http://google.com/generate_204"))
+                    return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }
