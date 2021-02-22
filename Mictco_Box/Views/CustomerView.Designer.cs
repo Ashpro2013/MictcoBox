@@ -31,17 +31,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.txtName = new MictcoUsercontrol.MictcoTextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.txtCity = new MictcoUsercontrol.MictcoTextBox();
+            this.txtPassword = new MictcoUsercontrol.MictcoTextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtPanNo = new MictcoUsercontrol.MictcoTextBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.txtPhone = new MictcoUsercontrol.MictcoTextBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtEmail = new MictcoUsercontrol.MictcoTextBox();
+            this.txtCareof = new MictcoUsercontrol.MictcoTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.txtCompany = new MictcoUsercontrol.MictcoTextBox();
-            this.label7 = new System.Windows.Forms.Label();
-            this.txtGSTNo = new MictcoUsercontrol.MictcoTextBox();
             this.dgvStaff = new System.Windows.Forms.DataGridView();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.col_PAN = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -51,6 +47,10 @@
             this.cmbSlot = new System.Windows.Forms.ComboBox();
             this.label8 = new System.Windows.Forms.Label();
             this.btnInOrOut = new System.Windows.Forms.Button();
+            this.label5 = new System.Windows.Forms.Label();
+            this.cmbStaff = new System.Windows.Forms.ComboBox();
+            this.label7 = new System.Windows.Forms.Label();
+            this.cmbExpaired = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
             this.SuspendLayout();
             // 
@@ -76,20 +76,20 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(111, 94);
+            this.label2.Location = new System.Drawing.Point(72, 94);
             this.label2.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(36, 16);
+            this.label2.Size = new System.Drawing.Size(74, 16);
             this.label2.TabIndex = 4;
-            this.label2.Text = "City :";
+            this.label2.Text = "Password :";
             // 
-            // txtCity
+            // txtPassword
             // 
-            this.txtCity.Location = new System.Drawing.Point(155, 94);
-            this.txtCity.Margin = new System.Windows.Forms.Padding(4);
-            this.txtCity.Name = "txtCity";
-            this.txtCity.Size = new System.Drawing.Size(363, 22);
-            this.txtCity.TabIndex = 5;
+            this.txtPassword.Location = new System.Drawing.Point(155, 94);
+            this.txtPassword.Margin = new System.Windows.Forms.Padding(4);
+            this.txtPassword.Name = "txtPassword";
+            this.txtPassword.Size = new System.Drawing.Size(363, 22);
+            this.txtPassword.TabIndex = 5;
             // 
             // label3
             // 
@@ -113,44 +113,25 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(94, 126);
+            this.label4.Location = new System.Drawing.Point(89, 126);
             this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(53, 16);
+            this.label4.Size = new System.Drawing.Size(59, 16);
             this.label4.TabIndex = 6;
-            this.label4.Text = "Phone :";
+            this.label4.Text = "Care Of :";
             // 
-            // txtPhone
+            // txtCareof
             // 
-            this.txtPhone.Location = new System.Drawing.Point(155, 126);
-            this.txtPhone.Margin = new System.Windows.Forms.Padding(4);
-            this.txtPhone.Name = "txtPhone";
-            this.txtPhone.Size = new System.Drawing.Size(363, 22);
-            this.txtPhone.TabIndex = 7;
-            this.txtPhone.TextChanged += new System.EventHandler(this.txtPhone_TextChanged);
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(88, 158);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(59, 16);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "EmailId :";
-            // 
-            // txtEmail
-            // 
-            this.txtEmail.Location = new System.Drawing.Point(155, 158);
-            this.txtEmail.Margin = new System.Windows.Forms.Padding(4);
-            this.txtEmail.Name = "txtEmail";
-            this.txtEmail.Size = new System.Drawing.Size(363, 22);
-            this.txtEmail.TabIndex = 9;
+            this.txtCareof.Location = new System.Drawing.Point(155, 126);
+            this.txtCareof.Margin = new System.Windows.Forms.Padding(4);
+            this.txtCareof.Name = "txtCareof";
+            this.txtCareof.Size = new System.Drawing.Size(363, 22);
+            this.txtCareof.TabIndex = 7;
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 190);
+            this.label6.Location = new System.Drawing.Point(75, 155);
             this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(72, 16);
@@ -159,29 +140,11 @@
             // 
             // txtCompany
             // 
-            this.txtCompany.Location = new System.Drawing.Point(155, 190);
+            this.txtCompany.Location = new System.Drawing.Point(155, 155);
             this.txtCompany.Margin = new System.Windows.Forms.Padding(4);
             this.txtCompany.Name = "txtCompany";
             this.txtCompany.Size = new System.Drawing.Size(363, 22);
             this.txtCompany.TabIndex = 11;
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(84, 222);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(63, 16);
-            this.label7.TabIndex = 12;
-            this.label7.Text = "GST No :";
-            // 
-            // txtGSTNo
-            // 
-            this.txtGSTNo.Location = new System.Drawing.Point(155, 222);
-            this.txtGSTNo.Margin = new System.Windows.Forms.Padding(4);
-            this.txtGSTNo.Name = "txtGSTNo";
-            this.txtGSTNo.Size = new System.Drawing.Size(363, 22);
-            this.txtGSTNo.TabIndex = 13;
             // 
             // dgvStaff
             // 
@@ -196,7 +159,7 @@
             this.dgvStaff.Name = "dgvStaff";
             this.dgvStaff.ReadOnly = true;
             this.dgvStaff.RowHeadersVisible = false;
-            this.dgvStaff.Size = new System.Drawing.Size(363, 315);
+            this.dgvStaff.Size = new System.Drawing.Size(363, 252);
             this.dgvStaff.TabIndex = 20;
             this.dgvStaff.TabStop = false;
             this.dgvStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
@@ -220,10 +183,11 @@
             // btnClear
             // 
             this.btnClear.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnClear.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnClear.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnClear.ForeColor = System.Drawing.Color.White;
-            this.btnClear.Location = new System.Drawing.Point(408, 306);
+            this.btnClear.Location = new System.Drawing.Point(404, 252);
             this.btnClear.Margin = new System.Windows.Forms.Padding(4);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(100, 30);
@@ -239,7 +203,7 @@
             this.btnDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnDelete.ForeColor = System.Drawing.Color.White;
-            this.btnDelete.Location = new System.Drawing.Point(277, 306);
+            this.btnDelete.Location = new System.Drawing.Point(273, 252);
             this.btnDelete.Margin = new System.Windows.Forms.Padding(4);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(100, 30);
@@ -255,7 +219,7 @@
             this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(145, 306);
+            this.btnSave.Location = new System.Drawing.Point(141, 252);
             this.btnSave.Margin = new System.Windows.Forms.Padding(4);
             this.btnSave.Name = "btnSave";
             this.btnSave.Size = new System.Drawing.Size(100, 30);
@@ -268,20 +232,20 @@
             // cmbSlot
             // 
             this.cmbSlot.FormattingEnabled = true;
-            this.cmbSlot.Location = new System.Drawing.Point(155, 254);
+            this.cmbSlot.Location = new System.Drawing.Point(293, 214);
             this.cmbSlot.Name = "cmbSlot";
-            this.cmbSlot.Size = new System.Drawing.Size(114, 24);
+            this.cmbSlot.Size = new System.Drawing.Size(74, 24);
             this.cmbSlot.TabIndex = 15;
             // 
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(110, 257);
+            this.label8.Location = new System.Drawing.Point(81, 217);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(37, 16);
+            this.label8.Size = new System.Drawing.Size(68, 16);
             this.label8.TabIndex = 14;
-            this.label8.Text = "Slot :";
+            this.label8.Text = "Expaired :";
             // 
             // btnInOrOut
             // 
@@ -289,10 +253,10 @@
             this.btnInOrOut.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnInOrOut.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnInOrOut.ForeColor = System.Drawing.Color.White;
-            this.btnInOrOut.Location = new System.Drawing.Point(281, 252);
+            this.btnInOrOut.Location = new System.Drawing.Point(404, 214);
             this.btnInOrOut.Margin = new System.Windows.Forms.Padding(4);
             this.btnInOrOut.Name = "btnInOrOut";
-            this.btnInOrOut.Size = new System.Drawing.Size(100, 30);
+            this.btnInOrOut.Size = new System.Drawing.Size(114, 30);
             this.btnInOrOut.TabIndex = 16;
             this.btnInOrOut.TabStop = false;
             this.btnInOrOut.Text = "In Or Out";
@@ -300,11 +264,55 @@
             this.btnInOrOut.Visible = false;
             this.btnInOrOut.Click += new System.EventHandler(this.btnInOrOut_Click);
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(107, 187);
+            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(40, 16);
+            this.label5.TabIndex = 14;
+            this.label5.Text = "Staff :";
+            // 
+            // cmbStaff
+            // 
+            this.cmbStaff.FormattingEnabled = true;
+            this.cmbStaff.Location = new System.Drawing.Point(155, 184);
+            this.cmbStaff.Name = "cmbStaff";
+            this.cmbStaff.Size = new System.Drawing.Size(363, 24);
+            this.cmbStaff.TabIndex = 15;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(249, 217);
+            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(37, 16);
+            this.label7.TabIndex = 14;
+            this.label7.Text = "Slot :";
+            // 
+            // cmbExpaired
+            // 
+            this.cmbExpaired.FormattingEnabled = true;
+            this.cmbExpaired.Items.AddRange(new object[] {
+            "No",
+            "Yes"});
+            this.cmbExpaired.Location = new System.Drawing.Point(155, 214);
+            this.cmbExpaired.Name = "cmbExpaired";
+            this.cmbExpaired.Size = new System.Drawing.Size(83, 24);
+            this.cmbExpaired.TabIndex = 15;
+            this.cmbExpaired.Text = "No";
+            // 
             // CustomerView
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
             this.CancelButton = this.btnClear;
-            this.ClientSize = new System.Drawing.Size(934, 364);
+            this.ClientSize = new System.Drawing.Size(934, 294);
+            this.Controls.Add(this.cmbStaff);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.cmbExpaired);
+            this.Controls.Add(this.label7);
             this.Controls.Add(this.cmbSlot);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.btnInOrOut);
@@ -312,17 +320,13 @@
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
             this.Controls.Add(this.dgvStaff);
-            this.Controls.Add(this.txtGSTNo);
-            this.Controls.Add(this.label7);
             this.Controls.Add(this.txtCompany);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.txtEmail);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.txtPhone);
+            this.Controls.Add(this.txtCareof);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.txtPanNo);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtCity);
+            this.Controls.Add(this.txtPassword);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.txtName);
             this.Controls.Add(this.label1);
@@ -343,17 +347,13 @@
         private System.Windows.Forms.Label label1;
         private MictcoUsercontrol.MictcoTextBox txtName;
         private System.Windows.Forms.Label label2;
-        private MictcoUsercontrol.MictcoTextBox txtCity;
+        private MictcoUsercontrol.MictcoTextBox txtPassword;
         private System.Windows.Forms.Label label3;
         private MictcoUsercontrol.MictcoTextBox txtPanNo;
         private System.Windows.Forms.Label label4;
-        private MictcoUsercontrol.MictcoTextBox txtPhone;
-        private System.Windows.Forms.Label label5;
-        private MictcoUsercontrol.MictcoTextBox txtEmail;
+        private MictcoUsercontrol.MictcoTextBox txtCareof;
         private System.Windows.Forms.Label label6;
         private MictcoUsercontrol.MictcoTextBox txtCompany;
-        private System.Windows.Forms.Label label7;
-        private MictcoUsercontrol.MictcoTextBox txtGSTNo;
         private System.Windows.Forms.DataGridView dgvStaff;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
@@ -363,5 +363,9 @@
         private System.Windows.Forms.ComboBox cmbSlot;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Button btnInOrOut;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.ComboBox cmbStaff;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.ComboBox cmbExpaired;
     }
 }

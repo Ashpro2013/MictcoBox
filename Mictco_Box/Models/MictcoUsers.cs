@@ -11,5 +11,6 @@ namespace Mictco_Box
         public string Id { get; set; }
         public string iPAddress { get; set; }
         public bool isUpdatable { get; set; }
+        public string UpdationURL { get; set; }
     }
 }

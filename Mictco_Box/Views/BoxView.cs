@@ -65,7 +65,7 @@ namespace Mictco_Box
                     {
                         foreach (var item in lbSlots.Items)
                         {
-                            ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = 0, OccupaidStatus = 0 }, "Slot", Properties.Settings.Default.Connection);
+                            ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = false, OccupaidStatus = false }, "Slot", Properties.Settings.Default.Connection);
                         }
                         Messages.SavedMessage();
                         btnClear_Click(null, null);
@@ -83,7 +83,7 @@ namespace Mictco_Box
                         {
                             foreach (var item in lbSlots.Items)
                             {
-                                ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = 0, OccupaidStatus = 0 }, "Slot", Properties.Settings.Default.Connection);
+                                ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = false, OccupaidStatus = false }, "Slot", Properties.Settings.Default.Connection);
                             }
                             Messages.UpdateMessage();
                             btnClear_Click(null, null);

@@ -14,8 +14,8 @@ namespace Mictco_Box
 {
     static class Program
     {
-        static string AuthSecret = "tBwFbHgvRH17fKPMqvQI2AG2QwTU5sH0k3QHrlpS";
-        static string BasePath = "https://fireapp-5b98f.firebaseio.com/";
+        static string AuthSecret = "gQln6cPDx07ObhbkFPQ4ZkfGP1Bvqnp2NUb5UIuq";
+        static string BasePath = "https://mictcoexeupdate-default-rtdb.firebaseio.com/";
         static string sTable = "Customers/";
         static IFirebaseClient client;
         static IFirebaseConfig config;
@@ -27,7 +27,7 @@ namespace Mictco_Box
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            if(AniHelper.CheckInternet())
+            if (AniHelper.CheckInternet())
             {
                 List<MictcoUsers> ipAddress = new List<MictcoUsers>();
                 string ip = AniHelper.getCPUID();
@@ -46,10 +46,10 @@ namespace Mictco_Box
                         ipAddress.Add(JsonConvert.DeserializeObject<MictcoUsers>(((JProperty)item).Value.ToString()));
                     }
                 }
-                if(!ipAddress.Any(x=> x.iPAddress==ip))
+                if (!ipAddress.Any(x => x.iPAddress == ip))
                 {
                     MictcoUsers mictco = new MictcoUsers();
-                    mictco.iPAddress =ip;
+                    mictco.iPAddress = ip;
                     mictco.isUpdatable = false;
                     var entdata = mictco;
                     PushResponse responses = client.Push(sTable, entdata);
@@ -59,7 +59,7 @@ namespace Mictco_Box
                 else
                 {
                     MictcoUsers mUser = ipAddress.FirstOrDefault(x => x.iPAddress == ip);
-                    if(mUser.isUpdatable)
+                    if (mUser.isUpdatable)
                     {
                         mUser.isUpdatable = false;
                         client = new FireSharp.FirebaseClient(config);
@@ -69,28 +69,19 @@ namespace Mictco_Box
             }
             if (Properties.Settings.Default.Connection == string.Empty)
             {
-                string path = AniHelper.NewDatabaseMethodCE("MictCoDB");
-                Properties.Settings.Default.Connection = path;
-                Properties.Settings.Default.Save();
+                Application.Run(new DBConfiguration(true));
             }
             else
             {
-                string path = Properties.Settings.Default.Connection.Replace("DataSource=", "");
-                if (!File.Exists(path))
+                DBContext db = new DBContext();
+                if (db.Staffs.Count < 1)
                 {
-                    path = AniHelper.NewDatabaseMethodCE("MictCoDB");
-                    Properties.Settings.Default.Connection = path;
-                    Properties.Settings.Default.Save();
+                    Application.Run(new StaffView(true));
                 }
-            }
-            DBContext db = new DBContext();
-            if(db.Staffs.Count<1)
-            {
-                Application.Run(new StaffView(true));
-            }
-            else
-            {
-                Application.Run(new Login());
+                else
+                {
+                    Application.Run(new Login());
+                }
             }
         }
     }

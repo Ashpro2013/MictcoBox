@@ -35,6 +35,16 @@ namespace Mictco_Box
                 }
             }
         }
+        public static void PanelClearMethod(Panel form)
+        {
+            foreach (Control item in form.Controls)
+            {
+                if (item is MictcoUsercontrol.MictcoTextBox)
+                {
+                    item.Text = string.Empty;
+                }
+            }
+        }
         public static void CopyData(Object source, Object target)
         {
             Type sourceType = source.GetType();
@@ -86,57 +96,6 @@ namespace Mictco_Box
             }
             return dsList;
         }
-        public static string  NewDatabaseMethodCE(string Company)
-        {
-            string path = Path.GetDirectoryName(System.Reflection.Assembly.GetEntryAssembly().Location) + "\\Data\\";
-            if (!Directory.Exists(path))
-            {
-                Directory.CreateDirectory(path);
-            }
-            string str = path + Company + ".sdf";
-            if (File.Exists(str))
-            {
-                File.Delete(str);
-            }
-            string strConnection = "DataSource=" + str;
-            SqlCeEngine en = new SqlCeEngine(strConnection);
-            en.CreateDatabase();
-            string query = string.Empty;
-            try
-            {
-                FileInfo file = new FileInfo(Path.GetDirectoryName(Application.ExecutablePath) + "\\MasterScript.sql");
-                if (!file.Exists)
-                {
-                    System.Windows.Forms.OpenFileDialog dlg = new System.Windows.Forms.OpenFileDialog();
-                    if (dlg.ShowDialog() == DialogResult.OK)
-                    {
-                        file = new FileInfo(dlg.FileName);
-                    }
-                }
-                string script = file.OpenText().ReadToEnd();
-                //script = script.Replace("PRIMARY KEY", "");
-                string[] scripts = script.Split(new string[] { "GO" }, StringSplitOptions.None);
-                using (SqlCeConnection cecon = new SqlCeConnection(strConnection))
-                {
-                    using (SqlCeCommand cmd = new SqlCeCommand())
-                    {
-                        cmd.Connection = cecon;
-                        cecon.Open();
-                        foreach (string item in scripts)
-                        {
-                            query = item;
-                            cmd.CommandText = item;
-                            cmd.ExecuteNonQuery();
-                        }
-                    }
-                }
-                return strConnection;
-            }
-            catch (Exception )
-            {
-                return strConnection;
-            }
-        }
         public static string getCPUID()
         {
             string cpuInfo = "";
@@ -168,6 +127,12 @@ namespace Mictco_Box
             {
                 return false;
             }
+        }
+        public static void FillCombo(ComboBox cmb, List<object> obj)
+        {
+            cmb.ValueMember = "Id";
+            cmb.DisplayMember = "Name";
+            cmb.DataSource = obj;
         }
     }
 }

@@ -9,5 +9,6 @@ namespace Mictco_Box
     public class ExCustomer : Customer
     {
         public int SL { get; set; }
+        public string Staffname { get; set; }
     }
 }

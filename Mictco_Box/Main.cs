@@ -14,8 +14,9 @@ namespace Mictco_Box
     {
         #region Private Variables
         DBContext db = new DBContext();
-        Button slotButton;
-        int w = 10, y = 10;
+        List<Customer> customers;
+        Customer customer;
+        int? iCustomerId;
         #endregion
 
         #region Constructor
@@ -26,33 +27,6 @@ namespace Mictco_Box
         #endregion
 
         #region Methods
-        private void AddSlotMethod(Slot slot)
-        {
-            
-            slotButton = new Button();
-            ButtonColorChangeMethod(slotButton, slot);
-            slotButton.ForeColor = Color.White;
-            slotButton.FlatStyle = FlatStyle.Flat;
-            slotButton.Text = slot.Name;
-            slotButton.Tag = slot.Id;
-            if (slot.FK_CustomerId != null && slot.OccupaidStatus==1)
-            {
-                ToolTip ttMain = new ToolTip();
-                ttMain.AutoPopDelay = 5000;
-                ttMain.InitialDelay = 1000;
-                ttMain.ReshowDelay = 500;
-                ttMain.ShowAlways = true;
-                ttMain.SetToolTip(this.slotButton, db.Customers.FirstOrDefault(x => x.Id == slot.FK_CustomerId).Name);
-            }
-            slotButton.Click += slotButton_Click;
-            slotButton.Size = new Size(100, 30);
-            slotButton.Location = new Point(w, y);
-            if (!pnlSlots.Contains(slotButton))
-            {
-                pnlSlots.Controls.Add(slotButton);
-            }
-            w = w + 110;
-        }
         private void OpenForm(Form frm, int X = 25, int Y = 25, string sForm = null)
         {
             try
@@ -108,74 +82,65 @@ namespace Mictco_Box
                 tabMdi.TabPages.Remove(tbp);
                 tabMdi.SelectedTab = tabMdi.TabPages[0];
             }
-            if (form.Name == "BoxView") { LoadMethod(); }
         }
-        void slotButton_Click(object sender, EventArgs e)
+        private void CustomerLoadMethod()
         {
-            Button btnSlot = (Button)sender;
-            SlotView frm = new SlotView();
-            Slot slot  = db.Slots.FirstOrDefault(x => x.Id == btnSlot.Tag.ToInt32());
-            frm.slot = slot;
-            if (frm.ShowDialog() == DialogResult.OK)
+            if (customer != null)
             {
-                ButtonColorChangeMethod(btnSlot, slot);
+                AniHelper.FillCombo(cmbSlot, db.Slots.Cast<object>().ToList());
+                txtName.Text = customer.Name;
+                txtPassword.Text = customer.Password;
+                txtPanNo.Text = customer.PanNumber;
+                txtCareof.Text = customer.Careof;
+                txtCompany.Text = customer.Company;
+                iCustomerId = customer.Id;
+                cmbStaff.SelectedValue = customer.Fk_StaffId;
+                cmbSlot.SelectedValue = customer.Fk_SlotId;
+                cmbExpaired.SelectedIndex = customer.isExpaired ? 1 : 0;
+                btnInOrOut.Visible = true;
+                GenerateReports(customer);
             }
         }
-        private static void ButtonColorChangeMethod(Button btnSlot, Slot slot)
+        private void GenerateReports(Customer customer)
         {
-            if (slot.OccupaidStatus == 0)
+            List<Transactions> transactions = new List<Transactions>();
+            transactions = db.Transactions.Where(x => x.FK_Customer == customer.Id).ToList();
+            List<ExTransactions> exTransactions = new List<ExTransactions>();
+            exTransactions = AniHelper.CopyListData<ExTransactions>(transactions.Cast<object>().ToList());
+            int iNo = 1;
+            foreach (var item in exTransactions)
             {
-                btnSlot.BackColor = Color.Gray;
+                item.SL = iNo;
+                item.SlotName = db.Slots.FirstOrDefault(x => x.Id == item.FK_Slot).Name;
+                item.StaffName = db.Staffs.FirstOrDefault(x => x.Id == item.FK_Staff).Name;
+                item.CustomerName = db.Customers.FirstOrDefault(x => x.Id == item.FK_Customer).Name;
+                iNo++;
             }
-            else
-            {
-                if (slot.InStatus == 1)
-                {
-                    btnSlot.BackColor = Color.Blue;
-                }
-                else
-                {
-                    btnSlot.BackColor = Color.Green;
-                }
-            }
+            dgvReports.AutoGenerateColumns = false;
+            dgvReports.DataSource = exTransactions;
         }
         #endregion
 
         #region Events
-        private void LoadMethod()
-        {
-            w = 10;
-            y = 10;
-            pnlSlots.Controls.Clear();
-            foreach (var item in db.Boxes)
-            {
-                foreach (var slot in db.Slots.Where(z => z.FK_BoxId == item.Id).ToList())
-                {
-                    AddSlotMethod(slot);
-                }
-                w = 10;
-                y = y + 40;
-            }
-        }
         private void Main_Load(object sender, EventArgs e)
         {
             this.WindowState = FormWindowState.Maximized;
+            customers = new List<Customer>();
+            AniHelper.FillCombo(cmbSlot, db.Slots.Where(x => x.OccupaidStatus == false).ToList().Cast<object>().ToList());
+            AniHelper.FillCombo(cmbStaff, db.Staffs.Where(x => x.Name != "Admin").ToList().Cast<object>().ToList());
             lblUser.Text = db.Staffs.FirstOrDefault(x => x.Id == User.iUserId).Name;
-            LoadMethod();
             if (db.Boxes.Count == 0)
             {
                 btnBox_Click(null, null);
             }
+            customers = db.Customers;
+            dgDetails.AutoGenerateColumns = false;
+            dgDetails.DataSource = customers;
         }
         private void btnBox_Click(object sender, EventArgs e)
         {
-            
             BoxView frm = new BoxView();
             OpenForm(frm);
-        }
-        void frm_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            LoadMethod();
         }
         private void btnCustomer_Click(object sender, EventArgs e)
         {
@@ -206,7 +171,7 @@ namespace Mictco_Box
         {
             if(tabMdi.SelectedIndex==0)
             {
-                LoadMethod();
+                txtSearch.Focus();
             }
         }
         private void btnAllReport_Click(object sender, EventArgs e)
@@ -220,5 +185,140 @@ namespace Mictco_Box
             OpenForm(frm);
         }
         #endregion
+
+        private void txtSearch_TextChanged(object sender, EventArgs e)
+        {
+            customers = db.Customers.Where(x => x.PanNumber.StartsWith(txtSearch.Text)).ToList();
+            if(customers.Count==0)
+            {
+                customers = db.Customers.Where(x => x.Name.StartsWith(txtSearch.Text)).ToList();
+                if(customers.Count==0)
+                {
+                    customers = db.Customers.Where(x => x.Company.StartsWith(txtSearch.Text)).ToList();
+                    if (customers.Count == 0) { customers= db.Customers.Where(x => x.Careof.StartsWith(txtSearch.Text)).ToList(); }
+                }
+            }
+            dgDetails.AutoGenerateColumns = false;
+            dgDetails.DataSource = customers;
+            if(customers.Count==1)
+            {
+                customer = customers.FirstOrDefault();
+                CustomerLoadMethod();
+                List<Transactions> transactions = new List<Transactions>();
+                transactions = db.Transactions.Where(x => x.FK_Customer==customer.Id).ToList();
+                List<ExTransactions> exTransactions = new List<ExTransactions>();
+                exTransactions = AniHelper.CopyListData<ExTransactions>(transactions.Cast<object>().ToList());
+                int iNo = 1;
+                foreach (var item in exTransactions)
+                {
+                    item.SL = iNo;
+                    item.SlotName = db.Slots.FirstOrDefault(x => x.Id == item.FK_Slot).Name;
+                    item.StaffName = db.Staffs.FirstOrDefault(x => x.Id == item.FK_Staff).Name;
+                    item.CustomerName = db.Customers.FirstOrDefault(x => x.Id == item.FK_Customer).Name;
+                    iNo++;
+                }
+                dgvReports.AutoGenerateColumns = false;
+                dgvReports.DataSource = exTransactions;
+            }
+        }
+        private void dgDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                customer = (Customer)dgDetails.CurrentRow.DataBoundItem;
+                CustomerLoadMethod();
+            }
+        }
+
+        private void btnInOrOut_Click(object sender, EventArgs e)
+        {
+            if (iCustomerId != null)
+            {
+                SlotView frm = new SlotView();
+                Transactions transactions = new Transactions();
+                transactions.FK_Customer = iCustomerId;
+                transactions.FK_Slot = cmbSlot.SelectedValue.ToInt32();
+                transactions.FK_Staff = cmbStaff.SelectedValue.ToInt32();
+                frm.entTransactions = transactions;
+                if (frm.ShowDialog() == DialogResult.OK)
+                {
+                    btnClear_Click(null, null);
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            iCustomerId = null;
+            txtSearch.Text = string.Empty;
+            customers = db.Customers;
+            customer = new Customer();
+            dgDetails.DataSource = customers;
+            AniHelper.PanelClearMethod(pnlCustomer);
+            AniHelper.FillCombo(cmbSlot, db.Slots.Where(x => x.OccupaidStatus == false).ToList().Cast<object>().ToList());
+            AniHelper.FillCombo(cmbStaff, db.Staffs.Where(x => x.Name != "Admin").ToList().Cast<object>().ToList());
+            btnInOrOut.Visible = false;
+            txtSearch.Focus();
+        }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            if (Messages.DeleteConfirmationMessage() && iCustomerId != null)
+            {
+                foreach (var item in db.Slots.Where(x => x.FK_CustomerId == iCustomerId))
+                {
+                    item.InStatus = false;
+                    item.OccupaidStatus = false;
+                    ORMForSDF.UpdateToDatabaseObj(item, "Slot", "Id", item.Id.toInt32(), Properties.Settings.Default.Connection);
+                }
+                ORMForSDF.DeleteFromDatabase("Transactions", "FK_Customer", iCustomerId.ToInt32(), Properties.Settings.Default.Connection);
+                if (ORMForSDF.DeleteFromDatabase("Customer", "Id", iCustomerId.toInt32(), Properties.Settings.Default.Connection)) { btnClear_Click(null, null); }
+            }
+        }
+
+        private void btnSave_Click(object sender, EventArgs e)
+        {
+            if (txtName.Text == string.Empty || txtPanNo.Text == string.Empty) { Messages.WarningMessage(); return; }
+            var customer = new Customer
+            {
+                Id = iCustomerId,
+                Name = txtName.Text,
+                PanNumber = txtPanNo.Text,
+                Company = txtCompany.Text,
+                Careof = txtCareof.Text,
+                Password = txtPassword.Text,
+                Fk_SlotId = cmbSlot.SelectedValue.ToInt32(),
+                Fk_StaffId = cmbStaff.SelectedValue.ToInt32(),
+                isExpaired = cmbExpaired.SelectedIndex == 0 ? false : true
+            };
+            if (iCustomerId == null || !db.Customers.Any(x => x.Id == iCustomerId))
+            {
+                if (ORMForSDF.InsertToDatabaseObj(customer, "Customer", Properties.Settings.Default.Connection))
+                {
+                    customer = db.Customers.FirstOrDefault(x => x.Name == txtName.Text);
+                    Slot slot = db.Slots.FirstOrDefault(x => x.Id == cmbSlot.SelectedValue.ToInt32());
+                    slot.OccupaidStatus = true;
+                    slot.InStatus = true;
+                    slot.FK_CustomerId = customer.Id;
+                    slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
+                    ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection);
+                    var transaction = new Transactions { Id = null, FK_Customer = slot.FK_CustomerId, FK_Slot = slot.Id, FK_Staff = cmbStaff.SelectedValue.ToInt32(), Date = DateTime.Now.Date, Status = "Allotted", Remarks = "" };
+                    if (ORMForSDF.InsertToDatabaseObj(transaction, "Transactions", Properties.Settings.Default.Connection))
+                    {
+                        var trans = new Transactions { Id = null, FK_Customer = slot.FK_CustomerId, FK_Slot = slot.Id, FK_Staff = cmbStaff.SelectedValue.ToInt32(), Date = DateTime.Now.Date, Status = "In", Remarks = "" };
+                        if (ORMForSDF.InsertToDatabaseObj(trans, "Transactions", Properties.Settings.Default.Connection)) { Messages.SavedMessage(); btnClear_Click(null, null); }
+                    }
+                }
+            }
+            else
+            {
+                if (ORMForSDF.UpdateToDatabaseObj(customer, "Customer", "Id", iCustomerId.toInt32(), Properties.Settings.Default.Connection)) { Messages.UpdateMessage(); btnClear_Click(null, null); }
+            }
+        }
+
+        private void cmbStaff_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnSave.PerformClick(); }
+        }
     }
 }

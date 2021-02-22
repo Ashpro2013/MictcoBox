@@ -29,55 +29,22 @@ namespace Mictco_Box
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvReports = new System.Windows.Forms.DataGridView();
-            this.txtSearch = new MictcoUsercontrol.MictcoTextBox();
+            this.components = new System.ComponentModel.Container();
             this.label3 = new System.Windows.Forms.Label();
-            this.col_SL = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Customer = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Staff = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Remarks = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_EmailId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_Company = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.col_GST = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).BeginInit();
+            this.txtSearch = new MictcoUsercontrol.MictcoTextBox();
+            this.exCustomerDataGridView = new System.Windows.Forms.DataGridView();
+            this.exCustomerBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.dataGridViewTextBoxColumn1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn6 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn7 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewTextBoxColumn8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.dataGridViewCheckBoxColumn1 = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.dataGridViewTextBoxColumn2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.exCustomerDataGridView)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exCustomerBindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // dgvReports
-            // 
-            this.dgvReports.AllowUserToAddRows = false;
-            this.dgvReports.AllowUserToDeleteRows = false;
-            this.dgvReports.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.dgvReports.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvReports.BackgroundColor = System.Drawing.Color.White;
-            this.dgvReports.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvReports.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.col_SL,
-            this.col_Customer,
-            this.col_Status,
-            this.col_Staff,
-            this.col_Remarks,
-            this.col_EmailId,
-            this.col_Company,
-            this.col_GST});
-            this.dgvReports.Location = new System.Drawing.Point(12, 44);
-            this.dgvReports.Margin = new System.Windows.Forms.Padding(4);
-            this.dgvReports.Name = "dgvReports";
-            this.dgvReports.ReadOnly = true;
-            this.dgvReports.RowHeadersVisible = false;
-            this.dgvReports.Size = new System.Drawing.Size(1290, 668);
-            this.dgvReports.TabIndex = 6;
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(264, 10);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(843, 20);
-            this.txtSearch.TabIndex = 5;
-            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
             // label3
             // 
@@ -85,109 +52,138 @@ namespace Mictco_Box
             this.label3.Location = new System.Drawing.Point(6, 10);
             this.label3.Margin = new System.Windows.Forms.Padding(5, 0, 5, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(173, 13);
+            this.label3.Size = new System.Drawing.Size(195, 13);
             this.label3.TabIndex = 4;
-            this.label3.Text = "Pan Number/Name/Phonenumber:";
+            this.label3.Text = "Pan Number/Name/Company/Care Of :";
             // 
-            // col_SL
+            // txtSearch
             // 
-            this.col_SL.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_SL.DataPropertyName = "SL";
-            this.col_SL.HeaderText = "SL";
-            this.col_SL.Name = "col_SL";
-            this.col_SL.ReadOnly = true;
-            this.col_SL.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.col_SL.Width = 50;
+            this.txtSearch.Location = new System.Drawing.Point(211, 10);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(5);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(495, 20);
+            this.txtSearch.TabIndex = 5;
+            this.txtSearch.TextChanged += new System.EventHandler(this.txtSearch_TextChanged);
             // 
-            // col_Customer
+            // exCustomerDataGridView
             // 
-            this.col_Customer.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Customer.DataPropertyName = "Name";
-            this.col_Customer.FillWeight = 377.4782F;
-            this.col_Customer.HeaderText = "Name";
-            this.col_Customer.Name = "col_Customer";
-            this.col_Customer.ReadOnly = true;
-            this.col_Customer.Width = 300;
+            this.exCustomerDataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.exCustomerDataGridView.AutoGenerateColumns = false;
+            this.exCustomerDataGridView.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.exCustomerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.exCustomerDataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dataGridViewTextBoxColumn1,
+            this.dataGridViewTextBoxColumn4,
+            this.dataGridViewTextBoxColumn5,
+            this.dataGridViewTextBoxColumn6,
+            this.dataGridViewTextBoxColumn7,
+            this.dataGridViewTextBoxColumn8,
+            this.dataGridViewCheckBoxColumn1,
+            this.dataGridViewTextBoxColumn2});
+            this.exCustomerDataGridView.DataSource = this.exCustomerBindingSource;
+            this.exCustomerDataGridView.Location = new System.Drawing.Point(-1, 38);
+            this.exCustomerDataGridView.Name = "exCustomerDataGridView";
+            this.exCustomerDataGridView.RowHeadersVisible = false;
+            this.exCustomerDataGridView.Size = new System.Drawing.Size(763, 243);
+            this.exCustomerDataGridView.TabIndex = 6;
             // 
-            // col_Status
+            // exCustomerBindingSource
             // 
-            this.col_Status.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.col_Status.DataPropertyName = "PanNumber";
-            this.col_Status.FillWeight = 9.790575F;
-            this.col_Status.HeaderText = "Pan Number";
-            this.col_Status.Name = "col_Status";
-            this.col_Status.ReadOnly = true;
-            this.col_Status.Width = 120;
+            this.exCustomerBindingSource.DataSource = typeof(Mictco_Box.ExCustomer);
             // 
-            // col_Staff
+            // dataGridViewTextBoxColumn1
             // 
-            this.col_Staff.DataPropertyName = "City";
-            this.col_Staff.FillWeight = 9.790575F;
-            this.col_Staff.HeaderText = "City";
-            this.col_Staff.Name = "col_Staff";
-            this.col_Staff.ReadOnly = true;
+            this.dataGridViewTextBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn1.DataPropertyName = "SL";
+            this.dataGridViewTextBoxColumn1.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn1.HeaderText = "SL";
+            this.dataGridViewTextBoxColumn1.Name = "dataGridViewTextBoxColumn1";
+            this.dataGridViewTextBoxColumn1.Width = 40;
             // 
-            // col_Remarks
+            // dataGridViewTextBoxColumn4
             // 
-            this.col_Remarks.DataPropertyName = "PhoneNumber";
-            this.col_Remarks.FillWeight = 9.790575F;
-            this.col_Remarks.HeaderText = "Phone Number";
-            this.col_Remarks.Name = "col_Remarks";
-            this.col_Remarks.ReadOnly = true;
+            this.dataGridViewTextBoxColumn4.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.dataGridViewTextBoxColumn4.DataPropertyName = "Name";
+            this.dataGridViewTextBoxColumn4.FillWeight = 657.868F;
+            this.dataGridViewTextBoxColumn4.HeaderText = "Name";
+            this.dataGridViewTextBoxColumn4.Name = "dataGridViewTextBoxColumn4";
+            this.dataGridViewTextBoxColumn4.Width = 162;
             // 
-            // col_EmailId
+            // dataGridViewTextBoxColumn5
             // 
-            this.col_EmailId.DataPropertyName = "EmailId";
-            this.col_EmailId.FillWeight = 22.47252F;
-            this.col_EmailId.HeaderText = "EmailId";
-            this.col_EmailId.Name = "col_EmailId";
-            this.col_EmailId.ReadOnly = true;
+            this.dataGridViewTextBoxColumn5.DataPropertyName = "PanNumber";
+            this.dataGridViewTextBoxColumn5.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn5.HeaderText = "Pan Number";
+            this.dataGridViewTextBoxColumn5.Name = "dataGridViewTextBoxColumn5";
             // 
-            // col_Company
+            // dataGridViewTextBoxColumn6
             // 
-            this.col_Company.DataPropertyName = "Company";
-            this.col_Company.FillWeight = 22.47252F;
-            this.col_Company.HeaderText = "Company";
-            this.col_Company.Name = "col_Company";
-            this.col_Company.ReadOnly = true;
+            this.dataGridViewTextBoxColumn6.DataPropertyName = "Company";
+            this.dataGridViewTextBoxColumn6.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn6.HeaderText = "Company";
+            this.dataGridViewTextBoxColumn6.Name = "dataGridViewTextBoxColumn6";
             // 
-            // col_GST
+            // dataGridViewTextBoxColumn7
             // 
-            this.col_GST.DataPropertyName = "GSTNumber";
-            this.col_GST.FillWeight = 22.47252F;
-            this.col_GST.HeaderText = "GST Number";
-            this.col_GST.Name = "col_GST";
-            this.col_GST.ReadOnly = true;
+            this.dataGridViewTextBoxColumn7.DataPropertyName = "Careof";
+            this.dataGridViewTextBoxColumn7.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn7.HeaderText = "Care Of";
+            this.dataGridViewTextBoxColumn7.Name = "dataGridViewTextBoxColumn7";
+            // 
+            // dataGridViewTextBoxColumn8
+            // 
+            this.dataGridViewTextBoxColumn8.DataPropertyName = "Password";
+            this.dataGridViewTextBoxColumn8.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn8.HeaderText = "Password";
+            this.dataGridViewTextBoxColumn8.Name = "dataGridViewTextBoxColumn8";
+            // 
+            // dataGridViewCheckBoxColumn1
+            // 
+            this.dataGridViewCheckBoxColumn1.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.dataGridViewCheckBoxColumn1.DataPropertyName = "isExpaired";
+            this.dataGridViewCheckBoxColumn1.FillWeight = 20.30457F;
+            this.dataGridViewCheckBoxColumn1.HeaderText = "Expaired";
+            this.dataGridViewCheckBoxColumn1.Name = "dataGridViewCheckBoxColumn1";
+            // 
+            // dataGridViewTextBoxColumn2
+            // 
+            this.dataGridViewTextBoxColumn2.DataPropertyName = "Staffname";
+            this.dataGridViewTextBoxColumn2.FillWeight = 20.30457F;
+            this.dataGridViewTextBoxColumn2.HeaderText = "Staff Name";
+            this.dataGridViewTextBoxColumn2.Name = "dataGridViewTextBoxColumn2";
             // 
             // Report
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1312, 722);
-            this.Controls.Add(this.dgvReports);
+            this.ClientSize = new System.Drawing.Size(764, 281);
+            this.Controls.Add(this.exCustomerDataGridView);
             this.Controls.Add(this.txtSearch);
             this.Controls.Add(this.label3);
             this.Name = "Report";
             this.Text = "Report";
             this.Load += new System.EventHandler(this.Report_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvReports)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exCustomerDataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.exCustomerBindingSource)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.DataGridView dgvReports;
         private MictcoUsercontrol.MictcoTextBox txtSearch;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_SL;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Customer;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Staff;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Remarks;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_EmailId;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_Company;
-        private System.Windows.Forms.DataGridViewTextBoxColumn col_GST;
+        private System.Windows.Forms.DataGridView exCustomerDataGridView;
+        private System.Windows.Forms.BindingSource exCustomerBindingSource;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn4;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn5;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn6;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn7;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn8;
+        private System.Windows.Forms.DataGridViewCheckBoxColumn dataGridViewCheckBoxColumn1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn dataGridViewTextBoxColumn2;
     }
 }

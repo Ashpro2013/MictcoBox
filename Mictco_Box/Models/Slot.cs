@@ -13,7 +13,7 @@ namespace Mictco_Box
         public int FK_BoxId { get; set; }
         public int? FK_StaffId { get; set; }
         public int? FK_CustomerId { get; set; }
-        public int InStatus { get; set; }
-        public int OccupaidStatus { get; set; }
+        public bool InStatus { get; set; }
+        public bool OccupaidStatus { get; set; }
     }
 }

@@ -27,28 +27,18 @@ namespace Mictco_Box
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            List<Customer> entCustomer = new List<Customer>();
-            entCustomer = db.Customers.Where(x => x.PanNumber.Contains(txtSearch.Text)).ToList();
-            if (entCustomer.Count>0)
+            List<Customer> customers = new List<Customer>();
+            customers = db.Customers.Where(x => x.PanNumber.StartsWith(txtSearch.Text)).ToList();
+            if (customers.Count == 0)
             {
-                dgvLoad(AniHelper.CopyListData<ExCustomer>(entCustomer.Cast<object>().ToList()));
-            }
-            else
-            {
-                entCustomer = db.Customers.Where(x => x.Name.Contains(txtSearch.Text)).ToList();
-                if (entCustomer.Count > 0)
+                customers = db.Customers.Where(x => x.Name.StartsWith(txtSearch.Text)).ToList();
+                if (customers.Count == 0)
                 {
-                    dgvLoad(AniHelper.CopyListData<ExCustomer>(entCustomer.Cast<object>().ToList()));
-                }
-                else
-                {
-                    entCustomer = db.Customers.Where(x => x.PhoneNumebr.Contains(txtSearch.Text)).ToList();
-                    if (entCustomer.Count > 0)
-                    {
-                        dgvLoad(AniHelper.CopyListData<ExCustomer>(entCustomer.Cast<object>().ToList()));
-                    }
+                    customers = db.Customers.Where(x => x.Company.StartsWith(txtSearch.Text)).ToList();
+                    if (customers.Count == 0) { customers = db.Customers.Where(x => x.Careof.StartsWith(txtSearch.Text)).ToList(); }
                 }
             }
+            dgvLoad(AniHelper.CopyListData<ExCustomer>(customers.Cast<object>().ToList()));
 
         }
 
@@ -58,10 +48,10 @@ namespace Mictco_Box
             foreach (var item in entCustomer)
             {
                 item.SL = iCount;
+                item.Staffname = db.Staffs.FirstOrDefault(x => x.Id == item.Fk_StaffId).Name;
                 iCount++;
             }
-            dgvReports.AutoGenerateColumns = false;
-            dgvReports.DataSource = entCustomer;
+            exCustomerDataGridView.DataSource = entCustomer;
         }
 
         private void Report_Load(object sender, EventArgs e)

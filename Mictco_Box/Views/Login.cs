@@ -48,6 +48,14 @@ namespace Mictco_Box
         {
             if (e.KeyCode == Keys.Enter) { btnLogin_Click(null, null); }
         }
+        private void Login_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F3)
+            {
+                DBConfiguration frm = new DBConfiguration();
+                frm.ShowDialog();
+            }
+        }
         #endregion
     }
 }

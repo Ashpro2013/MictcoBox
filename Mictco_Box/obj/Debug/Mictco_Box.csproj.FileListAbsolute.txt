@@ -64,3 +64,39 @@ F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\Newtonsoft.Json.xml
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Extensions.xml
 F:\Running Project\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Primitives.xml
 F:\Running Project\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.App.config
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe.config
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.exe
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Mictco_Box.pdb
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\FireSharp.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Newtonsoft.Json.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Extensions.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Primitives.dll
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.pdb
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\MictcoUsercontrol.dll.config
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Microsoft.Threading.Tasks.Extensions.Desktop.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\Newtonsoft.Json.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Extensions.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\bin\Debug\System.Net.Http.Primitives.xml
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.App.config
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csprojAssemblyReference.cache
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Main.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Properties.Resources.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.BoxView.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.CustomerView.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Login.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.Report.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.SlotView.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.StaffView.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.TransactionView.resources
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.GenerateResource.cache
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CoreCompileInputs.cache
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.csproj.CopyComplete
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.exe
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.pdb
+D:\MictcoBox\MictcoBox\Mictco_Box\obj\Debug\Mictco_Box.DBConfiguration.resources

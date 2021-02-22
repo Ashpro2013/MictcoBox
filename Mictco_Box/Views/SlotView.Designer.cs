@@ -33,15 +33,15 @@
             this.label2 = new System.Windows.Forms.Label();
             this.lblSlotName = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.cmbCustomer = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
             this.cmbStaff = new System.Windows.Forms.ComboBox();
-            this.btnSave = new System.Windows.Forms.Button();
+            this.btnOk = new System.Windows.Forms.Button();
             this.btnCancel = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.cmbInOrOut = new System.Windows.Forms.ComboBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cmbOccupaid = new System.Windows.Forms.ComboBox();
+            this.lblCustomer = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // label1
@@ -94,14 +94,6 @@
             this.label3.TabIndex = 4;
             this.label3.Text = "Customer :";
             // 
-            // cmbCustomer
-            // 
-            this.cmbCustomer.FormattingEnabled = true;
-            this.cmbCustomer.Location = new System.Drawing.Point(154, 106);
-            this.cmbCustomer.Name = "cmbCustomer";
-            this.cmbCustomer.Size = new System.Drawing.Size(363, 24);
-            this.cmbCustomer.TabIndex = 5;
-            // 
             // label4
             // 
             this.label4.AutoSize = true;
@@ -120,20 +112,20 @@
             this.cmbStaff.Size = new System.Drawing.Size(363, 24);
             this.cmbStaff.TabIndex = 7;
             // 
-            // btnSave
+            // btnOk
             // 
-            this.btnSave.BackColor = System.Drawing.Color.DodgerBlue;
-            this.btnSave.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSave.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.ForeColor = System.Drawing.Color.White;
-            this.btnSave.Location = new System.Drawing.Point(157, 218);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(100, 30);
-            this.btnSave.TabIndex = 10;
-            this.btnSave.Text = "&Save";
-            this.btnSave.UseVisualStyleBackColor = false;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            this.btnOk.BackColor = System.Drawing.Color.DodgerBlue;
+            this.btnOk.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btnOk.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnOk.ForeColor = System.Drawing.Color.White;
+            this.btnOk.Location = new System.Drawing.Point(157, 218);
+            this.btnOk.Margin = new System.Windows.Forms.Padding(4);
+            this.btnOk.Name = "btnOk";
+            this.btnOk.Size = new System.Drawing.Size(100, 30);
+            this.btnOk.TabIndex = 10;
+            this.btnOk.Text = "&Save";
+            this.btnOk.UseVisualStyleBackColor = false;
+            this.btnOk.Click += new System.EventHandler(this.btnSave_Click);
             // 
             // btnCancel
             // 
@@ -170,6 +162,7 @@
             this.cmbInOrOut.Name = "cmbInOrOut";
             this.cmbInOrOut.Size = new System.Drawing.Size(86, 24);
             this.cmbInOrOut.TabIndex = 5;
+            this.cmbInOrOut.Text = "No";
             // 
             // label6
             // 
@@ -191,6 +184,17 @@
             this.cmbOccupaid.Name = "cmbOccupaid";
             this.cmbOccupaid.Size = new System.Drawing.Size(86, 24);
             this.cmbOccupaid.TabIndex = 5;
+            this.cmbOccupaid.Text = "Yes";
+            // 
+            // lblCustomer
+            // 
+            this.lblCustomer.AutoSize = true;
+            this.lblCustomer.Location = new System.Drawing.Point(151, 109);
+            this.lblCustomer.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lblCustomer.Name = "lblCustomer";
+            this.lblCustomer.Size = new System.Drawing.Size(45, 16);
+            this.lblCustomer.TabIndex = 3;
+            this.lblCustomer.Text = "label1";
             // 
             // SlotView
             // 
@@ -198,15 +202,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(608, 270);
             this.Controls.Add(this.btnCancel);
-            this.Controls.Add(this.btnSave);
+            this.Controls.Add(this.btnOk);
             this.Controls.Add(this.cmbStaff);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.cmbOccupaid);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.cmbInOrOut);
             this.Controls.Add(this.label5);
-            this.Controls.Add(this.cmbCustomer);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.lblCustomer);
             this.Controls.Add(this.lblSlotName);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblBoxName);
@@ -229,14 +233,14 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label lblSlotName;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.ComboBox cmbCustomer;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.ComboBox cmbStaff;
-        private System.Windows.Forms.Button btnSave;
+        private System.Windows.Forms.Button btnOk;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox cmbInOrOut;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.ComboBox cmbOccupaid;
+        private System.Windows.Forms.Label lblCustomer;
     }
 }

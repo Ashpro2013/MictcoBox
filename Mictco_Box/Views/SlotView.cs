@@ -13,11 +13,12 @@ namespace Mictco_Box
     public partial class SlotView : Form
     {
         #region Public Properies
-        public Slot slot { get; set; }
+        public Transactions entTransactions { get; set; }
         #endregion
 
         #region Private Variables
         DBContext db = new DBContext();
+        Slot slot;
         #endregion
 
         public SlotView()
@@ -27,44 +28,34 @@ namespace Mictco_Box
 
         private void SlotView_Load(object sender, EventArgs e)
         {
-            cmbCustomer.ValueMember = "Id";
-            cmbCustomer.DisplayMember = "Name";
-            cmbCustomer.DataSource = db.Customers.ToList();
-            cmbStaff.ValueMember = "Id";
-            cmbStaff.DisplayMember = "Name";
-            cmbStaff.DataSource = db.Staffs.ToList();
-            cmbStaff.SelectedValue = User.iUserId;
-            cmbStaff.Enabled = false;
-            lblBoxName.Text = db.Boxes.FirstOrDefault(x => x.Id == slot.FK_BoxId).Name;
-            lblSlotName.Text = slot.Name;
-            cmbInOrOut.SelectedIndex= slot.InStatus;
-            cmbOccupaid.SelectedIndex = slot.OccupaidStatus;
-            if (slot.FK_CustomerId != null)
+            AniHelper.FillCombo(cmbStaff, db.Staffs.Where(x=> x.Name != "Admin").Cast<object>().ToList());
+            if(entTransactions !=null)
             {
-                cmbCustomer.SelectedValue = slot.FK_CustomerId;
-            }
-            if (slot.FK_StaffId != null)
-            {
-                cmbStaff.SelectedValue = slot.FK_StaffId;
+                slot = db.Slots.FirstOrDefault(x => x.Id == entTransactions.FK_Slot);
+                lblBoxName.Text = db.Boxes.FirstOrDefault(x => x.Id == slot.FK_BoxId).Name;
+                lblSlotName.Text = slot.Name;
+                lblCustomer.Text = db.Customers.FirstOrDefault(x => x.Id == entTransactions.FK_Customer).Name;
+                cmbStaff.SelectedValue = entTransactions.FK_Staff;
+                cmbStaff.Focus();
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            slot.InStatus = cmbInOrOut.SelectedIndex;
-            slot.OccupaidStatus = cmbOccupaid.SelectedIndex;
-            slot.FK_CustomerId = cmbCustomer.SelectedValue.ToInt32();
+            slot.InStatus = cmbInOrOut.SelectedIndex==0 ? false : true;
+            slot.OccupaidStatus = cmbOccupaid.SelectedIndex==0 ? false : true;
+            slot.FK_CustomerId = entTransactions.FK_Customer;
             slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
-            if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection)) 
+            if (ORMForSDF.UpdateToDatabaseObj(slot, "Slot", "Id", slot.Id.toInt32(), Properties.Settings.Default.Connection))
             {
                 string status = string.Empty;
-                if(cmbOccupaid.SelectedIndex==0 )
+                if (cmbOccupaid.SelectedIndex == 0)
                 {
                     status = "Alotment Removed";
                 }
                 else
                 {
-                    if(cmbInOrOut.SelectedIndex==0)
+                    if (cmbInOrOut.SelectedIndex == 0)
                     {
                         status = "Outed";
                     }
@@ -73,9 +64,13 @@ namespace Mictco_Box
                         status = "In";
                     }
                 }
-                var transaction = new Transactions { Id=null,FK_Customer = slot.FK_CustomerId,FK_Slot = slot.Id,FK_Staff=User.iUserId,Date = DateTime.Now.Date,Status=status,Remarks=""};
-                if (ORMForSDF.InsertToDatabaseObj(transaction, "Transactions", Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
+                entTransactions.FK_Staff = cmbStaff.SelectedValue.ToInt32();
+                entTransactions.Date = DateTime.Now;
+                entTransactions.Status = status;
+                if (ORMForSDF.InsertToDatabaseObj(entTransactions, "Transactions", Properties.Settings.Default.Connection)) { this.DialogResult = System.Windows.Forms.DialogResult.OK; this.Close(); }
             }
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, EventArgs e)

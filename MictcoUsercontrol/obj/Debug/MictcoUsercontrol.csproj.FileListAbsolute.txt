@@ -14,3 +14,12 @@ F:\Running Project\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.cspro
 F:\Running Project\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.dll
 F:\Running Project\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.pdb
 F:\Running Project\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csprojAssemblyReference.cache
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.dll.config
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.dll
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\bin\Debug\MictcoUsercontrol.pdb
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csprojAssemblyReference.cache
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.Properties.Resources.resources
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csproj.GenerateResource.cache
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csproj.CoreCompileInputs.cache
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.dll
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.pdb

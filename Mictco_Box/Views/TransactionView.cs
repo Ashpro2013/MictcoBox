@@ -24,46 +24,10 @@ namespace Mictco_Box
         #endregion
 
         #region Methods
-        private Slot getCurrent()
-        {
-            try
-            {
-                if (dgvSlots.CurrentRow != null)
-                {
-                    Slot slot = (Slot)dgvSlots.CurrentRow.DataBoundItem;
-                    return slot;
-                }
-                else
-                {
-                    return null;
-                }
-            }
-            catch (IndexOutOfRangeException)
-            {
-                return null;
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
-        private void dgvLoad(Customer customer)
-        {
-            List<Slot> slots = new List<Slot>();
-            slots = db.Slots.Where(x => x.FK_CustomerId == customer.Id && x.OccupaidStatus == 1).ToList();
-            dgvSlots.AutoGenerateColumns = false;
-            if (slots.Count > 0)
-            {
-                dgvSlots.DataSource = slots;
-            }
-            Slot slot = new Slot();
-            slot = slots.FirstOrDefault();
-            GenerateReports(slot);
-        }
-        private void GenerateReports(Slot slot)
+        private void GenerateReports(Customer customer)
         {
             List<Transactions> transactions = new List<Transactions>();
-            transactions = db.Transactions.Where(x => x.FK_Slot == slot.Id).ToList();
+            transactions = db.Transactions.Where(x => x.FK_Customer == customer.Id).ToList();
             List<ExTransactions> exTransactions = new List<ExTransactions>();
             exTransactions = AniHelper.CopyListData<ExTransactions>(transactions.Cast<object>().ToList());
             int iNo = 1;
@@ -84,35 +48,16 @@ namespace Mictco_Box
         private void txtPanNo_TextChanged(object sender, EventArgs e)
         {
             Customer customer = new Customer();
-            customer=db.Customers.FirstOrDefault(x => x.PanNumber.Contains(txtSearch.Text));
-            if(customer !=null)
+            customer=db.Customers.FirstOrDefault(x => x.PanNumber.StartsWith(txtSearch.Text));
+            if(customer ==null)
             {
-                dgvLoad(customer);
-            }
-            else
-            {
-                customer = db.Customers.FirstOrDefault(x => x.Name.Contains(txtSearch.Text));
-                if(customer !=null)
+                customer = db.Customers.FirstOrDefault(x => x.Name.StartsWith(txtSearch.Text));
+                if(customer==null)
                 {
-                    dgvLoad(customer);
-                }
-                else
-                {
-                    customer = db.Customers.FirstOrDefault(x => x.PhoneNumebr.Contains(txtSearch.Text));
-                    if(customer!=null)
-                    {
-                        dgvLoad(customer);
-                    }
+                    customer = db.Customers.FirstOrDefault(x => x.Company.StartsWith(txtSearch.Text));
                 }
             }
-        }
-        private void dgvSlots_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-            if(e.RowIndex>=0)
-            {
-                Slot slot = getCurrent();
-                GenerateReports(slot);
-            }
+            GenerateReports(customer);
         }
         private void TransactionView_Load(object sender, EventArgs e)
         {
