@@ -58,6 +58,10 @@ namespace Mictco_Box
                 txtPassword.Text = sCollection[3].Replace(" Password = ", "");
             }
         }
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter) { btnOk.PerformClick(); }
+        }
         #endregion
     }
 }

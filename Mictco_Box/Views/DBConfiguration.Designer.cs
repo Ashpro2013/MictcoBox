@@ -50,6 +50,7 @@ namespace Mictco_Box
             this.txtPassword.PasswordChar = 'x';
             this.txtPassword.Size = new System.Drawing.Size(172, 20);
             this.txtPassword.TabIndex = 15;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // label4
             // 
@@ -182,7 +183,7 @@ namespace Mictco_Box
             this.KeyPreview = true;
             this.Name = "DBConfiguration";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "DBConfiguration";
+            this.Text = "DB Configuration";
             this.Load += new System.EventHandler(this.DBConfiguration_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
