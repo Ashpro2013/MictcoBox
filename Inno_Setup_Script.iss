@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define MyAppName "Mictcobox"
-#define MyAppVersion "1.5"
+#define MyAppVersion "1.9"
 #define MyAppPublisher "Mictco Solutions"
 #define MyAppURL "http://www.mictco.com/"
 #define MyAppExeName "Mictco_Box.exe"
