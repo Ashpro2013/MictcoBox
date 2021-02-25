@@ -34,8 +34,8 @@ Name nvarchar(100) NULL,
 FK_BoxId int NULL,
 FK_StaffId int NULL,
 FK_CustomerId int NULL,
-InStatus int NULL,
-OccupaidStatus int NULL
+InStatus bit NULL,
+OccupaidStatus bit NULL
 )
 GO
 Create Table Transactions

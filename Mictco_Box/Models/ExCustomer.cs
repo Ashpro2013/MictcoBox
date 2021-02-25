@@ -10,5 +10,6 @@ namespace Mictco_Box
     {
         public int SL { get; set; }
         public string Staffname { get; set; }
+        public string Expaired { get; set; }
     }
 }

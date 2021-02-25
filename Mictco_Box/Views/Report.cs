@@ -27,38 +27,34 @@ namespace Mictco_Box
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            List<Customer> customers = new List<Customer>();
-            customers = db.Customers.Where(x => x.PanNumber.StartsWith(txtSearch.Text)).ToList();
-            if (customers.Count == 0)
-            {
-                customers = db.Customers.Where(x => x.Name.StartsWith(txtSearch.Text)).ToList();
-                if (customers.Count == 0)
-                {
-                    customers = db.Customers.Where(x => x.Company.StartsWith(txtSearch.Text)).ToList();
-                    if (customers.Count == 0) { customers = db.Customers.Where(x => x.Careof.StartsWith(txtSearch.Text)).ToList(); }
-                }
-            }
-            dgvLoad(AniHelper.CopyListData<ExCustomer>(customers.Cast<object>().ToList()));
-
-        }
-
-        private void dgvLoad(List<ExCustomer> entCustomer)
-        {
+            exCustomerDataGridView.DataSource = null;
+            if (txtSearch.Text == string.Empty) { return; }
+            List<ExCustomer> exCustomers = new List<ExCustomer>();
+            DataTable dt = ORMForSDF.GetDataTableWithIdParameter_SP("spGetCustomerReport", new { sText = txtSearch.Text }, Properties.Settings.Default.Connection);
             int iCount = 1;
-            foreach (var item in entCustomer)
+            foreach (DataRow item in dt.Rows)
             {
-                item.SL = iCount;
-                item.Staffname = db.Staffs.FirstOrDefault(x => x.Id == item.Fk_StaffId).Name;
+                ExCustomer exCustomer = new ExCustomer();
+                exCustomer.SL = iCount;
+                exCustomer.Id = item[0].ToInt32();
+                exCustomer.Name = item[1].ToString();
+                exCustomer.PanNumber = item[2].ToString();
+                exCustomer.Company = item[3].ToString();
+                exCustomer.Careof = item[4].ToString();
+                exCustomer.isExpaired = item[5].ToString().ToBool();
+                exCustomer.Staffname = item[6].ToString();
+                exCustomer.Expaired = exCustomer.isExpaired ? "Expaired" : "Active";
                 iCount++;
+                exCustomers.Add(exCustomer);
             }
-            exCustomerDataGridView.DataSource = entCustomer;
+            exCustomerDataGridView.AutoGenerateColumns = false;
+            exCustomerDataGridView.DataSource = exCustomers;
         }
+
 
         private void Report_Load(object sender, EventArgs e)
         {
-            List<Customer> entCustomer = new List<Customer>();
-            entCustomer = db.Customers.ToList();
-            dgvLoad(AniHelper.CopyListData<ExCustomer>(entCustomer.Cast<object>().ToList()));
+           
             this.WindowState = FormWindowState.Maximized;
         }
         #endregion

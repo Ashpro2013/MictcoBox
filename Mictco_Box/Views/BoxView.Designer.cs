@@ -34,14 +34,16 @@
             this.txtName = new MictcoUsercontrol.MictcoTextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.cmbStaff = new System.Windows.Forms.ComboBox();
-            this.lbSlots = new System.Windows.Forms.ListBox();
-            this.dgvStaff = new System.Windows.Forms.DataGridView();
+            this.dgBox = new System.Windows.Forms.DataGridView();
             this.col_Name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btnClear = new System.Windows.Forms.Button();
             this.btnDelete = new System.Windows.Forms.Button();
             this.btnSave = new System.Windows.Forms.Button();
             this.txtSlotCount = new MictcoUsercontrol.MictcoTextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).BeginInit();
+            this.dgSlot = new System.Windows.Forms.DataGridView();
+            this.col_Slot = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBox)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSlot)).BeginInit();
             this.SuspendLayout();
             // 
             // label3
@@ -67,6 +69,8 @@
             // txtName
             // 
             this.txtName.CharacterCasing = System.Windows.Forms.CharacterCasing.Upper;
+            this.txtName.EnterColor = System.Drawing.Color.LightPink;
+            this.txtName.LeaveColor = System.Drawing.Color.White;
             this.txtName.Location = new System.Drawing.Point(98, 25);
             this.txtName.Margin = new System.Windows.Forms.Padding(4);
             this.txtName.Name = "txtName";
@@ -91,30 +95,22 @@
             this.cmbStaff.Size = new System.Drawing.Size(306, 21);
             this.cmbStaff.TabIndex = 3;
             // 
-            // lbSlots
+            // dgBox
             // 
-            this.lbSlots.FormattingEnabled = true;
-            this.lbSlots.Location = new System.Drawing.Point(98, 117);
-            this.lbSlots.Name = "lbSlots";
-            this.lbSlots.Size = new System.Drawing.Size(306, 160);
-            this.lbSlots.TabIndex = 6;
-            // 
-            // dgvStaff
-            // 
-            this.dgvStaff.AllowUserToAddRows = false;
-            this.dgvStaff.AllowUserToDeleteRows = false;
-            this.dgvStaff.BackgroundColor = System.Drawing.Color.White;
-            this.dgvStaff.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvStaff.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.dgBox.AllowUserToAddRows = false;
+            this.dgBox.AllowUserToDeleteRows = false;
+            this.dgBox.BackgroundColor = System.Drawing.Color.White;
+            this.dgBox.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgBox.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.col_Name});
-            this.dgvStaff.Location = new System.Drawing.Point(421, 25);
-            this.dgvStaff.Name = "dgvStaff";
-            this.dgvStaff.ReadOnly = true;
-            this.dgvStaff.RowHeadersVisible = false;
-            this.dgvStaff.Size = new System.Drawing.Size(363, 293);
-            this.dgvStaff.TabIndex = 7;
-            this.dgvStaff.TabStop = false;
-            this.dgvStaff.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
+            this.dgBox.Location = new System.Drawing.Point(421, 25);
+            this.dgBox.Name = "dgBox";
+            this.dgBox.ReadOnly = true;
+            this.dgBox.RowHeadersVisible = false;
+            this.dgBox.Size = new System.Drawing.Size(363, 293);
+            this.dgBox.TabIndex = 7;
+            this.dgBox.TabStop = false;
+            this.dgBox.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvStaff_CellContentClick);
             // 
             // col_Name
             // 
@@ -171,6 +167,8 @@
             // 
             // txtSlotCount
             // 
+            this.txtSlotCount.EnterColor = System.Drawing.Color.LightPink;
+            this.txtSlotCount.LeaveColor = System.Drawing.Color.White;
             this.txtSlotCount.Location = new System.Drawing.Point(98, 88);
             this.txtSlotCount.Name = "txtSlotCount";
             this.txtSlotCount.Size = new System.Drawing.Size(308, 20);
@@ -179,17 +177,41 @@
             this.txtSlotCount.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txtSlotCount_KeyPress);
             this.txtSlotCount.Validated += new System.EventHandler(this.txtSlotCount_Validated);
             // 
+            // dgSlot
+            // 
+            this.dgSlot.AllowUserToAddRows = false;
+            this.dgSlot.AllowUserToDeleteRows = false;
+            this.dgSlot.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgSlot.BackgroundColor = System.Drawing.Color.White;
+            this.dgSlot.ColumnHeadersBorderStyle = System.Windows.Forms.DataGridViewHeaderBorderStyle.Single;
+            this.dgSlot.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgSlot.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.col_Slot});
+            this.dgSlot.Location = new System.Drawing.Point(100, 117);
+            this.dgSlot.Name = "dgSlot";
+            this.dgSlot.ReadOnly = true;
+            this.dgSlot.RowHeadersVisible = false;
+            this.dgSlot.Size = new System.Drawing.Size(304, 163);
+            this.dgSlot.TabIndex = 11;
+            // 
+            // col_Slot
+            // 
+            this.col_Slot.DataPropertyName = "Name";
+            this.col_Slot.HeaderText = "Slot";
+            this.col_Slot.Name = "col_Slot";
+            this.col_Slot.ReadOnly = true;
+            // 
             // BoxView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(797, 329);
+            this.Controls.Add(this.dgSlot);
             this.Controls.Add(this.txtSlotCount);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.btnSave);
-            this.Controls.Add(this.dgvStaff);
-            this.Controls.Add(this.lbSlots);
+            this.Controls.Add(this.dgBox);
             this.Controls.Add(this.cmbStaff);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
@@ -200,7 +222,8 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Box";
             this.Load += new System.EventHandler(this.BoxView_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvStaff)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgBox)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dgSlot)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -213,12 +236,13 @@
         private MictcoUsercontrol.MictcoTextBox txtName;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ComboBox cmbStaff;
-        private System.Windows.Forms.ListBox lbSlots;
-        private System.Windows.Forms.DataGridView dgvStaff;
+        private System.Windows.Forms.DataGridView dgBox;
         private System.Windows.Forms.DataGridViewTextBoxColumn col_Name;
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Button btnSave;
         private MictcoUsercontrol.MictcoTextBox txtSlotCount;
+        private System.Windows.Forms.DataGridView dgSlot;
+        private System.Windows.Forms.DataGridViewTextBoxColumn col_Slot;
     }
 }

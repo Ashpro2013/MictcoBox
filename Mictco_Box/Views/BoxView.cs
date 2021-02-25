@@ -16,6 +16,8 @@ namespace Mictco_Box
         #region Private Variables
         int? iBoxId;
         DBContext db = new DBContext();
+        List<Slot> slots = new List<Slot>();
+        List<Slot> oldSlots = new List<Slot>();
         #endregion
         public BoxView()
         {
@@ -23,13 +25,15 @@ namespace Mictco_Box
         }
         private void BoxView_Load(object sender, EventArgs e)
         {
-            dgvStaff.AutoGenerateColumns = false;
-            dgvStaff.DataSource = db.Boxes.ToList();
+            dgBox.AutoGenerateColumns = false;
+            dgBox.DataSource = db.Boxes.ToList();
+            dgSlot.AutoGenerateColumns = false;
+            slots = new List<Slot>();
+            dgSlot.DataSource = slots;
             cmbStaff.DisplayMember = "Name";
             cmbStaff.ValueMember = "Id";
             cmbStaff.DataSource = db.Staffs.ToList();
             cmbStaff.SelectedValue = User.iUserId;
-            cmbStaff.Enabled = false;
             this.ActiveControl = txtName;
         }
 
@@ -38,17 +42,23 @@ namespace Mictco_Box
         {
             if (e.RowIndex >= 0)
             {
-                Box box = db.Boxes.FirstOrDefault(x => x.Name == dgvStaff.CurrentRow.Cells[0].Value.ToString());
+                Box box = db.Boxes.FirstOrDefault(x => x.Name == dgBox.CurrentRow.Cells[0].Value.ToString());
                 iBoxId = box.Id;
                 txtName.Text = box.Name;
                 cmbStaff.SelectedValue = box.FK_StaffId;
                 txtSlotCount.Text = db.Slots.Where(x => x.FK_BoxId == iBoxId).Count().ToString();
+                txtName.Enabled = false;
+                slots = db.Slots.Where(x => x.FK_BoxId == box.Id).ToList();
+                oldSlots = db.Slots.Where(x => x.FK_BoxId == box.Id).ToList();
+                dgSlot.AutoGenerateColumns = false;
+                dgSlot.DataSource = null;
+                dgSlot.DataSource = slots;
             }
         }
 
         private void btnSave_Click(object sender, EventArgs e)
         {
-            if (txtName.Text == string.Empty && lbSlots.Items.Count<1) { Messages.ErrorMessage("Please fill the details."); return; }
+            if (txtName.Text == string.Empty && slots.Count >0) { Messages.ErrorMessage("Please fill the details."); return; }
             var box = new Box
             {
                 Id = iBoxId,
@@ -56,17 +66,18 @@ namespace Mictco_Box
                 FK_StaffId = cmbStaff.SelectedValue.ToInt32(),
                 CreatedOn = DateTime.Now.Date
             };
-            if (iBoxId==null || !db.Boxes.Any(x => x.Id == iBoxId))
+            if (iBoxId==null)
             {
                 if (ORMForSDF.InsertToDatabaseObj(box, "Box", Properties.Settings.Default.Connection))
                 {
                     box = db.Boxes.FirstOrDefault(x=> x.Name==txtName.Text);
                     if (box.Id != null)
                     {
-                        foreach (var item in lbSlots.Items)
+                        foreach (var item in slots)
                         {
-                            ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = false, OccupaidStatus = false }, "Slot", Properties.Settings.Default.Connection);
+                            item.FK_BoxId = box.Id.ToInt32();
                         }
+                        ORMForSDF.InsertToDatabase(slots.Cast<object>().ToList(), "Slot", Properties.Settings.Default.Connection);
                         Messages.SavedMessage();
                         btnClear_Click(null, null);
                     }
@@ -75,19 +86,17 @@ namespace Mictco_Box
             }
             else
             {
-                if (ORMForSDF.DeleteFromDatabase("Slot", "FK_BoxId", iBoxId.toInt32(), Properties.Settings.Default.Connection))
+                if (ORMForSDF.UpdateToDatabaseObj(box, "Box", "Id", iBoxId.toInt32(), Properties.Settings.Default.Connection))
                 {
-                    if (ORMForSDF.UpdateToDatabaseObj(box, "Box", "Id", iBoxId.toInt32(), Properties.Settings.Default.Connection))
+                    if (iBoxId != null)
                     {
-                        if (box.Id != null)
+                        foreach (var item in slots)
                         {
-                            foreach (var item in lbSlots.Items)
-                            {
-                                ORMForSDF.InsertToDatabaseObj(new Slot { Id = null, Name = item.ToString(), FK_BoxId = box.Id.toInt32(), FK_CustomerId = null, FK_StaffId = null, InStatus = false, OccupaidStatus = false }, "Slot", Properties.Settings.Default.Connection);
-                            }
-                            Messages.UpdateMessage();
-                            btnClear_Click(null, null);
+                            item.FK_BoxId = iBoxId.ToInt32();
                         }
+                        ORMForSDF.UpdateDatabase(slots.Cast<object>().ToList(), oldSlots.Cast<object>().ToList(), "Slot", "Id","Name", Properties.Settings.Default.Connection);
+                        Messages.UpdateMessage();
+                        btnClear_Click(null, null);
                     }
                 }
             }
@@ -107,10 +116,13 @@ namespace Mictco_Box
         private void btnClear_Click(object sender, EventArgs e)
         {
             AniHelper.ClearMethod(this);
-            lbSlots.Items.Clear();
-            dgvStaff.AutoGenerateColumns = false;
-            dgvStaff.DataSource = db.Boxes.ToList();
+            slots = new List<Slot>();
+            oldSlots = new List<Slot>();
+            dgSlot.DataSource = null;
+            dgBox.AutoGenerateColumns = false;
+            dgBox.DataSource = db.Boxes.ToList();
             iBoxId = null;
+            txtName.Enabled = true;
             txtName.Focus();
 
         }
@@ -118,11 +130,27 @@ namespace Mictco_Box
        
         private void txtSlotCount_Validated(object sender, EventArgs e)
         {
-            lbSlots.Items.Clear();
-            for (int i = 1; i < txtSlotCount.Text.ToInt32() + 1; i++)
+            dgSlot.DataSource = null;
+            int iStart = 0;
+            if (slots.Count == 0)
             {
-                lbSlots.Items.Add(txtName.Text + i.ToString());
+                iStart = 1;
             }
+            else
+            {
+                iStart = slots.Count+1;
+            }
+            for (int i = iStart; i < txtSlotCount.Text.ToInt32() + 1; i++)
+            {
+                Slot slot = new Slot();
+                slot.Name = txtName.Text + i.ToString();
+                slot.InStatus = false;
+                slot.OccupaidStatus = false;
+                slot.FK_StaffId = cmbStaff.SelectedValue.ToInt32();
+                slots.Add(slot);
+            }
+            dgSlot.AutoGenerateColumns = false;
+            dgSlot.DataSource = slots;
         }
 
         private void txtSlotCount_KeyPress(object sender, KeyPressEventArgs e)

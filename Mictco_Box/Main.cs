@@ -98,24 +98,19 @@ namespace Mictco_Box
                 cmbSlot.SelectedValue = customer.Fk_SlotId;
                 cmbExpaired.SelectedIndex = customer.isExpaired ? 1 : 0;
                 btnInOrOut.Visible = true;
-                GenerateReports(customer);
             }
         }
-        private void GenerateReports(Customer customer)
+        private void GenerateReports(string sText)
         {
-            List<Transactions> transactions = new List<Transactions>();
-            transactions = db.Transactions.Where(x => x.FK_Customer == customer.Id).ToList();
             List<ExTransactions> exTransactions = new List<ExTransactions>();
-            exTransactions = AniHelper.CopyListData<ExTransactions>(transactions.Cast<object>().ToList());
-            int iNo = 1;
-            foreach (var item in exTransactions)
-            {
-                item.SL = iNo;
-                item.SlotName = db.Slots.FirstOrDefault(x => x.Id == item.FK_Slot).Name;
-                item.StaffName = db.Staffs.FirstOrDefault(x => x.Id == item.FK_Staff).Name;
-                item.CustomerName = db.Customers.FirstOrDefault(x => x.Id == item.FK_Customer).Name;
-                iNo++;
-            }
+            exTransactions = ORMForSDF.GetList_SP<ExTransactions>("spGetTransactionReport", new { sText = txtSearch.Text }, Properties.Settings.Default.Connection);
+            dgvReports.AutoGenerateColumns = false;
+            dgvReports.DataSource = exTransactions;
+        }
+        private void GenerateReports(int iValue)
+        {
+            List<ExTransactions> exTransactions = new List<ExTransactions>();
+            exTransactions = ORMForSDF.GetList_SP<ExTransactions>("spGetTransactionForMainReport", new { Val = iValue }, Properties.Settings.Default.Connection);
             dgvReports.AutoGenerateColumns = false;
             dgvReports.DataSource = exTransactions;
         }
@@ -171,6 +166,8 @@ namespace Mictco_Box
         {
             if(tabMdi.SelectedIndex==0)
             {
+                AniHelper.FillCombo(cmbSlot, db.Slots.Where(x => x.OccupaidStatus == false).ToList().Cast<object>().ToList());
+                AniHelper.FillCombo(cmbStaff, db.Staffs.Where(x => x.Name != "Admin").ToList().Cast<object>().ToList());
                 txtSearch.Focus();
             }
         }
@@ -188,37 +185,21 @@ namespace Mictco_Box
 
         private void txtSearch_TextChanged(object sender, EventArgs e)
         {
-            customers = db.Customers.Where(x => x.PanNumber.StartsWith(txtSearch.Text)).ToList();
-            if(customers.Count==0)
+            dgDetails.DataSource = null;
+            dgvReports.DataSource = null;
+            AniHelper.PanelClearMethod(pnlCustomer);
+            if (txtSearch.Text == string.Empty) { return; }
+            List<Customer> exCustomers = new List<Customer>();
+
+            exCustomers = ORMForSDF.GetList_SP<Customer>("spGetMainCusomers", new { sText = txtSearch.Text },Properties.Settings.Default.Connection);
+
+            if (exCustomers.Count>0)
             {
-                customers = db.Customers.Where(x => x.Name.StartsWith(txtSearch.Text)).ToList();
-                if(customers.Count==0)
-                {
-                    customers = db.Customers.Where(x => x.Company.StartsWith(txtSearch.Text)).ToList();
-                    if (customers.Count == 0) { customers= db.Customers.Where(x => x.Careof.StartsWith(txtSearch.Text)).ToList(); }
-                }
-            }
-            dgDetails.AutoGenerateColumns = false;
-            dgDetails.DataSource = customers;
-            if(customers.Count==1)
-            {
-                customer = customers.FirstOrDefault();
+                dgDetails.AutoGenerateColumns = false;
+                dgDetails.DataSource = exCustomers;
+                customer = exCustomers.FirstOrDefault();
                 CustomerLoadMethod();
-                List<Transactions> transactions = new List<Transactions>();
-                transactions = db.Transactions.Where(x => x.FK_Customer==customer.Id).ToList();
-                List<ExTransactions> exTransactions = new List<ExTransactions>();
-                exTransactions = AniHelper.CopyListData<ExTransactions>(transactions.Cast<object>().ToList());
-                int iNo = 1;
-                foreach (var item in exTransactions)
-                {
-                    item.SL = iNo;
-                    item.SlotName = db.Slots.FirstOrDefault(x => x.Id == item.FK_Slot).Name;
-                    item.StaffName = db.Staffs.FirstOrDefault(x => x.Id == item.FK_Staff).Name;
-                    item.CustomerName = db.Customers.FirstOrDefault(x => x.Id == item.FK_Customer).Name;
-                    iNo++;
-                }
-                dgvReports.AutoGenerateColumns = false;
-                dgvReports.DataSource = exTransactions;
+                GenerateReports(txtSearch.Text);
             }
         }
         private void dgDetails_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -227,6 +208,7 @@ namespace Mictco_Box
             {
                 customer = (Customer)dgDetails.CurrentRow.DataBoundItem;
                 CustomerLoadMethod();
+                GenerateReports(customer.Id.ToInt32());
             }
         }
 

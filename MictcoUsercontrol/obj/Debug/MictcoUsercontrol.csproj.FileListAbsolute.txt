@@ -22,3 +22,4 @@ D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csproj.Gene
 D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csproj.CoreCompileInputs.cache
 D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.dll
 D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.pdb
+D:\MictcoBox\MictcoBox\MictcoUsercontrol\obj\Debug\MictcoUsercontrol.csprojAssemblyReference.cache

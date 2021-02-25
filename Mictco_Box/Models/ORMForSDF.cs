@@ -295,6 +295,91 @@ namespace Mictco_Box
                 throw;
             }
         }
+        public static bool UpdateDatabase(List<object> newDatas, List<object> oldDatas, string sTable, string IdColumn,string nmColumn, string sConnection)
+        {
+            List<Common> newList = new List<Common>();
+            List<Common> oldList = new List<Common>();
+            newList = GetIdList(newDatas, IdColumn,nmColumn);
+            oldList = GetIdList(oldDatas, IdColumn,nmColumn);
+            try
+            {
+                foreach (Common item in oldList)
+                {
+                    bool included = newList.Any(x => x.id == item.id);
+                    if (!included)
+                    {
+                        DeleteFromDatabase(sTable, IdColumn, item.id, sConnection);
+                    }
+                }
+            }
+            catch (Exception)
+            {
+                return false;
+                throw;
+            }
+            foreach (Common item in newList)
+            {
+                bool included = oldList.Any(x => x.id == item.id);
+                if (!included)
+                {
+                    string sVal = item.Name;
+                    try
+                    {
+                        foreach (var obj in newDatas)
+                        {
+                            foreach (var x in obj.GetType().GetProperties())
+                            {
+                                if (x.Name == nmColumn)
+                                {
+                                    string nVal = x.GetValue(obj, null).ToString();
+                                    if (nVal == sVal)
+                                    {
+                                        InsertToDatabaseObj(obj, sTable, sConnection);
+                                        break;
+                                    }
+                                }
+                               
+                            }
+                           
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                        throw;
+                    }
+                }
+                else
+                {
+                    int? sVal = item.id;
+                    try
+                    {
+                        foreach (var obj in newDatas)
+                        {
+                            foreach (var x in obj.GetType().GetProperties())
+                            {
+                                if (x.Name == IdColumn)
+                                {
+                                    int? iVal = x.GetValue(obj, null).ToInt32();
+                                    if (iVal == sVal)
+                                    {
+                                        UpdateToDatabaseObj(obj, sTable, IdColumn, sVal.ToInt32(), sConnection);
+                                    }
+                                }
+                                break;
+                            }
+                        }
+                    }
+                    catch (Exception)
+                    {
+                        return false;
+                        throw;
+                    }
+                }
+            }
+            return true;
+        }
+
         public static bool DeleteFromDatabase(string table, string column, int iValue, string Connection)
         {
             string Query = "Delete From  " + table + " Where " + column + " = @" + column + "";
@@ -434,6 +519,37 @@ namespace Mictco_Box
         #endregion
 
         #region Private Method
+        private static List<Common> GetIdList(List<object> data, string idColumn, string nmColumn)
+        {
+            try
+            {
+                List<Common> iCommon = new List<Common>();
+                foreach (var obj in data)
+                {
+                    Common cmn = new Common();
+                    foreach (var item in obj.GetType().GetProperties())
+                    {
+                        
+                        if (item.Name == idColumn)
+                        {
+                            cmn.id = item.GetValue(obj, null).ToInt32();
+                        }
+                        else if(item.Name==nmColumn)
+                        {
+                            cmn.Name = item.GetValue(obj, null).ToString();
+                            break;
+                        }
+                       
+                    }
+                    iCommon.Add(cmn);
+                }
+                return iCommon;
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+        }
         private static List<Common> GetCommon(string sTable, string sColumn, string sConnection)
         {
             try
