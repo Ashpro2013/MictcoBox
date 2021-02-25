@@ -295,12 +295,12 @@ namespace Mictco_Box
                 throw;
             }
         }
-        public static bool UpdateDatabase(List<object> newDatas, List<object> oldDatas, string sTable, string IdColumn,string nmColumn, string sConnection)
+        public static bool UpdateDatabase(List<object> newDatas, List<object> oldDatas, string sTable, string IdColumn, string sConnection)
         {
             List<Common> newList = new List<Common>();
             List<Common> oldList = new List<Common>();
-            newList = GetIdList(newDatas, IdColumn,nmColumn);
-            oldList = GetIdList(oldDatas, IdColumn,nmColumn);
+            newList = GetIdList(newDatas, IdColumn);
+            oldList = GetIdList(oldDatas, IdColumn);
             try
             {
                 foreach (Common item in oldList)
@@ -322,26 +322,25 @@ namespace Mictco_Box
                 bool included = oldList.Any(x => x.id == item.id);
                 if (!included)
                 {
-                    string sVal = item.Name;
+                    int? sVal = item.id;
                     try
                     {
                         foreach (var obj in newDatas)
                         {
                             foreach (var x in obj.GetType().GetProperties())
                             {
-                                if (x.Name == nmColumn)
+                                if (x.Name == IdColumn)
                                 {
-                                    string nVal = x.GetValue(obj, null).ToString();
+                                    int? nVal = x.GetValue(obj, null).ToInt32();
                                     if (nVal == sVal)
                                     {
                                         InsertToDatabaseObj(obj, sTable, sConnection);
                                         break;
                                     }
                                 }
-                               
                             }
-                           
                         }
+                        break;
                     }
                     catch (Exception)
                     {
@@ -519,7 +518,7 @@ namespace Mictco_Box
         #endregion
 
         #region Private Method
-        private static List<Common> GetIdList(List<object> data, string idColumn, string nmColumn)
+        private static List<Common> GetIdList(List<object> data, string idColumn)
         {
             try
             {
@@ -529,19 +528,13 @@ namespace Mictco_Box
                     Common cmn = new Common();
                     foreach (var item in obj.GetType().GetProperties())
                     {
-                        
                         if (item.Name == idColumn)
                         {
                             cmn.id = item.GetValue(obj, null).ToInt32();
-                        }
-                        else if(item.Name==nmColumn)
-                        {
-                            cmn.Name = item.GetValue(obj, null).ToString();
+                            iCommon.Add(cmn);
                             break;
                         }
-                       
                     }
-                    iCommon.Add(cmn);
                 }
                 return iCommon;
             }

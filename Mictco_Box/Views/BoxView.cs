@@ -94,7 +94,7 @@ namespace Mictco_Box
                         {
                             item.FK_BoxId = iBoxId.ToInt32();
                         }
-                        ORMForSDF.UpdateDatabase(slots.Cast<object>().ToList(), oldSlots.Cast<object>().ToList(), "Slot", "Id","Name", Properties.Settings.Default.Connection);
+                        ORMForSDF.UpdateDatabase(slots.Cast<object>().ToList(), oldSlots.Cast<object>().ToList(), "Slot", "Id", Properties.Settings.Default.Connection);
                         Messages.UpdateMessage();
                         btnClear_Click(null, null);
                     }
